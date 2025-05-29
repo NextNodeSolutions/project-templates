@@ -1,0 +1,6 @@
+{
+	"*.{js,jsx,ts,tsx,json,jsonc,md}": [
+		"biome check --write --no-errors-on-unmatched --staged"
+	],
+	"package.json": ["better-sort-package-json"]
+}
