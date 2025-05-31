@@ -1,23 +1,63 @@
 [
-  {
-    "files_to_replace": ["package.json"],
-    "replacements": [
-      { "name": "name", "key": "name", "value": "{{project_name}}" },
-      { "name": "description", "key": "description", "value": "{{project_description}}" },
-      { "name": "author", "key": "author", "value": "{{project_author}}" },
-      { "name": "keywords", "key": "keywords", "value": "{{project_keywords}}" },
-      { "name": "license", "key": "license", "value": "{{project_license}}" },
-      { "name": "version", "key": "version", "value": "{{project_version}}" }
-    ]
-  },
-  {
-    "files_to_replace": ["README.md"],
-    "replacements": [
-      { "name": "project_name", "key": "@nextnode/functions-client", "value": "{{project_name}}" },
-      { "name": "project_name_install", "key": "pnpm add @nextnode/functions-client", "value": "pnpm add {{project_name}}" },
-      { "name": "project_name_import", "key": "import { NextnodeClient } from '@nextnode/functions-client';", "value": "import { NextnodeClient } from '{{project_name}}';" },
-      { "name": "project_description", "key": "A TypeScript client library for Nextnode Functions, designed to simplify function execution and API interactions.", "value": "{{project_description}}" },
-      { "name": "author", "key": "Walid M", "value": "{{project_author}}" }
-    ]
-  }
-] 
+	{
+		"files_to_replace": ["package.json"],
+		"replacements": [
+			{ "name": "name", "key": "name", "value": "{{project_name}}" },
+			{
+				"name": "description",
+				"key": "description",
+				"value": "{{project_description}}"
+			},
+			{
+				"name": "author",
+				"key": "author",
+				"value": "{{project_author}}"
+			},
+			{
+				"name": "keywords",
+				"key": "keywords",
+				"value": "{{project_keywords}}"
+			},
+			{
+				"name": "license",
+				"key": "license",
+				"value": "{{project_license}}"
+			},
+			{
+				"name": "version",
+				"key": "version",
+				"value": "{{project_version}}"
+			}
+		]
+	},
+	{
+		"files_to_replace": ["README.md"],
+		"replacements": [
+			{
+				"name": "name",
+				"key": "@nextnode/functions-client",
+				"value": "{{project_name}}"
+			},
+			{
+				"name": "name",
+				"key": "pnpm add @nextnode/functions-client",
+				"value": "pnpm add {{project_name}}"
+			},
+			{
+				"name": "name",
+				"key": "import { NextnodeClient } from '@nextnode/functions-client';",
+				"value": "import { NextnodeClient } from '{{project_name}}';"
+			},
+			{
+				"name": "description",
+				"key": "A TypeScript client library for Nextnode Functions, designed to simplify function execution and API interactions.",
+				"value": "{{project_description}}"
+			},
+			{
+				"name": "author",
+				"key": "Walid M",
+				"value": "{{project_author}}"
+			}
+		]
+	}
+]
