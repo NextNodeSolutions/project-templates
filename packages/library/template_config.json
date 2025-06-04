@@ -16,7 +16,8 @@
 			{
 				"name": "keywords",
 				"key": "keywords",
-				"value": "{{project_keywords}}"
+				"value": "{{project_keywords}}",
+				"type": "array"
 			},
 			{
 				"name": "license",
