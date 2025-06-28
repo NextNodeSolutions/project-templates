@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 
 import node from '@astrojs/node'
-import react from '@astrojs/react'
 
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 4321
@@ -23,5 +22,4 @@ export default defineConfig({
 	adapter: node({
 		mode: 'standalone',
 	}),
-	integrations: [react()],
 })
