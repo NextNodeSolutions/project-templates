@@ -1,0 +1,35 @@
+---
+// Welcome to Astro! Everything between these triple-dash code fences
+// is your "component frontmatter". It never runs in the browser.
+console.log('This runs in your terminal, not the browser!');
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Template Astro Nextnode - Rapide, Moderne, Prêt à l'emploi"
+  description="Template Astro haute performance créé par Nextnode. Intègre Tailwind CSS, TypeScript, et les meilleures pratiques de développement pour vos projets modernes."
+>
+  <Header />
+  
+  <main>
+    <Hero 
+      title="Template Astro Nextnode"
+      subtitle="Le point de départ parfait pour vos projets"
+      description="Un template moderne et performant qui intègre les meilleures pratiques du développement web. Avec Astro, Tailwind CSS, TypeScript et tous les outils dont vous avez besoin pour créer des applications exceptionnelles."
+      primaryCta={{ text: "Commencer maintenant", href: "#features" }}
+      secondaryCta={{ text: "Voir sur GitHub", href: "https://github.com/nextnode/astro-template" }}
+    />
+    
+    <Features 
+      title="Tout ce dont vous avez besoin"
+      subtitle="Un template complet et optimisé pour la performance"
+    />
+  </main>
+  
+  <Footer />
+</BaseLayout>

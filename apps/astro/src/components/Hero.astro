@@ -1,0 +1,119 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  primaryCta?: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+}
+
+const {
+  title = "Template Astro",
+  subtitle = "Propulsé par Nextnode",
+  description = "Un template moderne, performant et prêt à l'emploi pour vos projets Astro. Configuré avec les meilleures pratiques et outils de développement.",
+  primaryCta = { text: "Commencer", href: "/docs" },
+  secondaryCta = { text: "Voir le code", href: "https://github.com/nextnode" }
+} = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background with gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-nextnode-50 via-white to-accent-50"></div>
+  
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-nextnode-200/30 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-200/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-3/4 left-1/3 w-64 h-64 bg-nextnode-300/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto container-padding text-center">
+    <div class="max-w-4xl mx-auto">
+      <!-- Badge -->
+      <div class="mb-8">
+        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-nextnode-100 to-accent-100 text-nextnode-800 border border-nextnode-200/50">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+          </svg>
+          Template haute performance
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text leading-tight">
+        {title}
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-xl md:text-2xl font-semibold text-gray-600 mb-8">
+        {subtitle}
+      </p>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+        {description}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href={primaryCta.href}
+          class="group btn-primary px-8 py-4 rounded-xl text-lg flex items-center"
+        >
+          {primaryCta.text}
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        
+        <a 
+          href={secondaryCta.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group btn-secondary px-8 py-4 rounded-xl text-lg flex items-center"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+          {secondaryCta.text}
+        </a>
+      </div>
+
+      <!-- Tech stack indicators -->
+      <div class="mt-16 pt-8 border-t border-gray-200">
+        <p class="text-sm text-gray-500 mb-4">Construit avec les meilleures technologies</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <div class="flex items-center space-x-2">
+            <svg class="w-6 h-6 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.5 18.5L12 14l-4.5 4.5L6 17l6-6 6 6-1.5 1.5z"/>
+              <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
+            </svg>
+            <span class="font-medium">Astro</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-6 h-6 text-cyan-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+            </svg>
+            <span class="font-medium">Tailwind CSS</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-6 h-6 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zM12 3.375c.621 0 1.125.504 1.125 1.125s-.504 1.125-1.125 1.125-1.125-.504-1.125-1.125S11.379 3.375 12 3.375zM8.625 9.75c.621 0 1.125.504 1.125 1.125s-.504 1.125-1.125 1.125S7.5 11.496 7.5 10.875 8.004 9.75 8.625 9.75zm6.75 0c.621 0 1.125.504 1.125 1.125s-.504 1.125-1.125 1.125-1.125-.504-1.125-1.125.504-1.125 1.125-1.125zM12 16.125c.621 0 1.125.504 1.125 1.125s-.504 1.125-1.125 1.125-1.125-.504-1.125-1.125.504-1.125 1.125-1.125z"/>
+            </svg>
+            <span class="font-medium">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+    <div class="animate-bounce">
+      <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+</section> 

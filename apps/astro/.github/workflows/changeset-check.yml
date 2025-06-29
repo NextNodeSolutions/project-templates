@@ -1,0 +1,45 @@
+name: Changeset Check
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize]
+    branches:
+      - main
+
+jobs:
+  changeset-check:
+    name: Check for Changesets
+    runs-on: ubuntu-latest
+    # Skip if PR is in draft mode
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for changesets
+        run: |
+          # Check if there are any source code changes that would require a changeset
+          SOURCE_CHANGES=$(git diff --name-only origin/main...HEAD | grep -E '\.(ts|tsx|js|jsx|json)$' | grep -v -E '(test|spec|\.d\.ts)$' | wc -l)
+          
+          if [ "$SOURCE_CHANGES" -eq 0 ]; then
+            echo "✅ No source code changes detected, changeset not required."
+            exit 0
+          fi
+          
+          # Check for changeset files
+          CHANGESET_COUNT=$(git diff --name-only origin/main...HEAD | grep -E '^\.changeset/.*\.md$' | wc -l)
+          
+          if [ "$CHANGESET_COUNT" -eq 0 ]; then
+            echo "❌ Source code changes detected but no changeset found."
+            echo "Please add a changeset by running 'pnpm changeset' and commit the generated file."
+            echo "This ensures that version changes are properly tracked."
+            echo ""
+            echo "Changed files that may require a changeset:"
+            git diff --name-only origin/main...HEAD | grep -E '\.(ts|tsx|js|jsx|json)$' | grep -v -E '(test|spec|\.d\.ts)$'
+            exit 1
+          else
+            echo "✅ Changeset found! ($CHANGESET_COUNT changeset file(s))"
+            git diff --name-only origin/main...HEAD | grep -E '^\.changeset/.*\.md$'
+          fi 
