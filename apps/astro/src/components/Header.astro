@@ -1,0 +1,99 @@
+---
+// Navigation items can be passed as props for flexibility
+export interface Props {
+  navItems?: Array<{ label: string; href: string }>;
+}
+
+const { 
+  navItems = [
+    { label: "Accueil", href: "/" },
+    { label: "Documentation", href: "/docs" },
+    { label: "À propos", href: "/about" },
+  ]
+} = Astro.props;
+---
+
+<header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto container-padding">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br from-nextnode-500 to-accent-500 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-lg">N</span>
+        </div>
+        <span class="text-xl font-bold text-gray-900">
+          <span class="text-nextnode-600">Next</span><span class="text-accent-600">node</span>
+        </span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="text-gray-700 hover:text-nextnode-600 transition-colors duration-200 font-medium"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a 
+          href="https://github.com/nextnode"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-gradient-to-r from-nextnode-600 to-accent-600 text-white px-4 py-2 rounded-lg font-medium hover:from-nextnode-700 hover:to-accent-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+        >
+          GitHub
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button 
+          type="button" 
+          class="text-gray-700 hover:text-nextnode-600 focus:outline-none focus:text-nextnode-600"
+          id="mobile-menu-button"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="block px-3 py-2 text-gray-700 hover:text-nextnode-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+          >
+            {item.label}
+          </a>
+        ))}
+        <a 
+          href="https://github.com/nextnode"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full text-center bg-gradient-to-r from-nextnode-600 to-accent-600 text-white px-3 py-2 rounded-md font-medium hover:from-nextnode-700 hover:to-accent-700 transition-all duration-200 mt-4"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  
+  button?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script> 

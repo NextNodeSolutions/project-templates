@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nextnode-50: #f0f9ff;
+  --color-nextnode-100: #e0f2fe;
+  --color-nextnode-200: #bae6fd;
+  --color-nextnode-300: #7dd3fc;
+  --color-nextnode-400: #38bdf8;
+  --color-nextnode-500: #0ea5e9;
+  --color-nextnode-600: #0284c7;
+  --color-nextnode-700: #0369a1;
+  --color-nextnode-800: #075985;
+  --color-nextnode-900: #0c4a6e;
+
+  --color-accent-50: #fef7ff;
+  --color-accent-100: #fdeeff;
+  --color-accent-200: #fbdcff;
+  --color-accent-300: #f8bfff;
+  --color-accent-400: #f391ff;
+  --color-accent-500: #ec4899;
+  --color-accent-600: #db2777;
+  --color-accent-700: #be185d;
+  --color-accent-800: #9d174d;
+  --color-accent-900: #831843;
+
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Styles de base personnalisés */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Composants personnalisés */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-nextnode-600 to-accent-600 text-white px-6 py-3 rounded-lg font-medium hover:from-nextnode-700 hover:to-accent-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:border-nextnode-300 hover:text-nextnode-700 transition-all duration-200;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-nextnode-600 via-accent-600 to-nextnode-800 bg-clip-text text-transparent;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+}
+
+/* Utilitaires personnalisés */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+} 
