@@ -35,29 +35,29 @@
 		"files_to_replace": ["README.md"],
 		"replacements": [
 			{
-				"name": "name",
-				"key": "@nextnode/functions-client",
-				"value": "{{project_name}}"
-			},
-			{
-				"name": "name",
-				"key": "pnpm add @nextnode/functions-client",
-				"value": "pnpm add {{project_name}}"
-			},
-			{
-				"name": "name",
-				"key": "import { NextnodeClient } from '@nextnode/functions-client';",
-				"value": "import { NextnodeClient } from '{{project_name}}';"
+				"name": "title",
+				"key": "# Astro Template",
+				"value": "# {{project_name}}"
 			},
 			{
 				"name": "description",
-				"key": "A TypeScript client library for Nextnode Functions, designed to simplify function execution and API interactions.",
+				"key": "A modern, high-performance Astro template with TypeScript, Tailwind CSS, and best practices for building fast websites and applications.",
 				"value": "{{project_description}}"
 			},
 			{
+				"name": "repository_url",
+				"key": "git clone <repository-url>",
+				"value": "git clone {{repository_url}}"
+			},
+			{
+				"name": "project_name",
+				"key": "cd astro-template",
+				"value": "cd {{project_name}}"
+			},
+			{
 				"name": "author",
-				"key": "Walid M",
-				"value": "{{project_author}}"
+				"key": "For support and questions, please open an issue on the repository.",
+				"value": "For support and questions, please contact {{project_author}} or open an issue on the repository."
 			}
 		]
 	}
