@@ -1,6 +1,7 @@
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@tailwindcss/oxide'
+  - esbuild
   - node
   - sharp
   - unrs-resolver
