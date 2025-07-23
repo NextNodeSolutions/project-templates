@@ -60,5 +60,15 @@
 				"value": "For support and questions, please contact {{project_author}} or open an issue on the repository."
 			}
 		]
+	},
+	{
+		"files_to_replace": ["docker-compose.yml"],
+		"replacements": [
+			{
+				"name": "project_name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			}
+		]
 	}
 ]
