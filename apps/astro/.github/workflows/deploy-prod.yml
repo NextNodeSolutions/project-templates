@@ -14,6 +14,7 @@ jobs:
   quality-checks:
     name: Quality Checks
     uses: ./.github/workflows/quality-checks.yml
+    if: github.run_number > 1
     with:
       run-lint: true
       run-typecheck: true

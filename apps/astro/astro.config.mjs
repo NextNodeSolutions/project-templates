@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import node from '@astrojs/node'
 
 const host = process.env.HOST || '0.0.0.0'
-const port = process.env.PORT || 4321
+const port = Number(process.env.PORT) || 4321
 const site = process.env.URL || `http://${host}:${port}`
 
 console.log({ port, site, host })
