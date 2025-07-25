@@ -52,7 +52,7 @@ jobs:
           
           # Deploy with blue-green strategy
           cp fly.toml fly.prod.toml
-          sed -i 's/app = "{{project_name}}"/app = "prod-{{project_name}}"/' fly.prod.toml
+          sed -i 's/app = {{project_name}}/app = "prod-{{project_name}}"/' fly.prod.toml
           sed -i 's/min_machines_running = 1/min_machines_running = 2/' fly.prod.toml
           sed -i 's/memory_mb = 512/memory_mb = 1024/' fly.prod.toml
           flyctl deploy --config fly.prod.toml --wait-timeout=15m --strategy=bluegreen
