@@ -4,7 +4,7 @@
 # Application name will be set dynamically based on environment
 # Production: prod-{{project_name}}
 # Development: dev-{{project_name}}
-app = "{{project_name}}"
+app = {{project_name}}
 primary_region = "cdg"  # Paris region for optimal European latency
 
 # Build configuration
