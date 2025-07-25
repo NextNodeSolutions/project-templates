@@ -1,0 +1,130 @@
+name: Quality Checks
+
+on:
+  workflow_call:
+    inputs:
+      run-lint:
+        description: 'Run lint check'
+        required: false
+        default: true
+        type: boolean
+      run-typecheck:
+        description: 'Run type check'
+        required: false
+        default: true
+        type: boolean
+      run-test:
+        description: 'Run tests'
+        required: false
+        default: true
+        type: boolean
+      run-build:
+        description: 'Run build'
+        required: false
+        default: true
+        type: boolean
+      run-security:
+        description: 'Run security checks'
+        required: false
+        default: false
+        type: boolean
+      test-coverage:
+        description: 'Run tests with coverage'
+        required: false
+        default: false
+        type: boolean
+      node-version:
+        description: 'Node.js version'
+        required: false
+        default: '22'
+        type: string
+      pnpm-version:
+        description: 'pnpm version'
+        required: false
+        default: '10.11.0'
+        type: string
+
+jobs:
+  lint:
+    name: '🔍 Lint'
+    runs-on: ubuntu-latest
+    if: inputs.run-lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ inputs.pnpm-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+
+  typecheck:
+    name: '🔷 Type Check'
+    runs-on: ubuntu-latest
+    if: inputs.run-typecheck
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ inputs.pnpm-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm type-check
+
+  test:
+    name: '🧪 Test'
+    runs-on: ubuntu-latest
+    if: inputs.run-test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ inputs.pnpm-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: ${{ inputs.test-coverage && 'pnpm test:coverage' || 'pnpm test' }}
+
+  build:
+    name: '🔨 Build'
+    runs-on: ubuntu-latest
+    if: inputs.run-build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ inputs.pnpm-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+  security:
+    name: '🔒 Security'
+    runs-on: ubuntu-latest
+    if: inputs.run-security
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ inputs.pnpm-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm audit --audit-level=high || echo "Security audit completed with warnings"
+      - run: |
+          docker build -t security-scan .
+          USER_CHECK=$(docker run --rm security-scan whoami)
+          [[ "$USER_CHECK" != "root" ]] && echo "✅ Non-root user" || echo "⚠️  Root user"

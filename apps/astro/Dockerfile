@@ -82,6 +82,10 @@ ENV NODE_ENV=production \
     NODE_OPTIONS="--max-old-space-size=512 --max-semi-space-size=64" \
     PATH=/app/node_modules/.bin:$PATH
 
+# Fly.io specific optimizations
+LABEL fly_launch_runtime="nodejs"
+LABEL fly_process_type="web"
+
 WORKDIR /app
 
 # Copy minimal production files from builder

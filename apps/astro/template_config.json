@@ -70,5 +70,47 @@
 				"value": "{{project_name}}"
 			}
 		]
+	},
+	{
+		"files_to_replace": [".github/workflows/deploy-dev.yml"],
+		"replacements": [
+			{
+				"name": "project_name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			},
+			{
+				"name": "website_url",
+				"key": "{{website_url}}",
+				"value": "{{website_url}}",
+				"default": ""
+			}
+		]
+	},
+	{
+		"files_to_replace": [".github/workflows/deploy-prod.yml"],
+		"replacements": [
+			{
+				"name": "project_name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			},
+			{
+				"name": "website_url",
+				"key": "{{website_url}}",
+				"value": "{{website_url}}",
+				"default": ""
+			}
+		]
+	},
+	{
+		"files_to_replace": ["fly.toml"],
+		"replacements": [
+			{
+				"name": "project_name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			}
+		]
 	}
 ]
