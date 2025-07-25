@@ -8,7 +8,7 @@ on:
 env:
   FLY_APP_NAME: dev-{{project_name}}
   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-  WEBSITE_URL: "{{website_url}}"
+  WEBSITE_URL: {{website_url}}
 
 jobs:
   quality-checks:
