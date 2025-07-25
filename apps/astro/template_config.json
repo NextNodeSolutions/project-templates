@@ -84,6 +84,12 @@
 				"key": "{{website_url}}",
 				"value": "{{website_url}}",
 				"default": ""
+			},
+			{
+				"name": "fly_org",
+				"key": "{{fly_org}}",
+				"value": "{{fly_org}}",
+				"default": "nextnode"
 			}
 		]
 	},
@@ -100,6 +106,12 @@
 				"key": "{{website_url}}",
 				"value": "{{website_url}}",
 				"default": ""
+			},
+			{
+				"name": "fly_org",
+				"key": "{{fly_org}}",
+				"value": "{{fly_org}}",
+				"default": "nextnode"
 			}
 		]
 	},
