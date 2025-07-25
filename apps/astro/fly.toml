@@ -1,0 +1,89 @@
+# Fly.io Configuration for {{project_name}}
+# Multi-environment configuration (dev/prod)
+
+# Application name will be set dynamically based on environment
+# Production: prod-{{project_name}}
+# Development: dev-{{project_name}}
+app = "{{project_name}}"
+primary_region = "cdg"  # Paris region for optimal European latency
+
+# Build configuration
+[build]
+  dockerfile = "Dockerfile"
+
+# Environment variables
+[env]
+  NODE_ENV = "production"
+  HOST = "0.0.0.0"
+  PORT = "4321"
+  ASTRO_TELEMETRY_DISABLED = "1"
+  NODE_NO_WARNINGS = "1"
+  NODE_OPTIONS = "--max-old-space-size=512 --max-semi-space-size=64"
+
+# HTTP service configuration
+[[services]]
+  internal_port = 4321
+  protocol = "tcp"
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  # HTTP handlers
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  # Health checks
+  [[services.tcp_checks]]
+    grace_period = "10s"
+    interval = "30s"
+    restart_limit = 0
+    timeout = "5s"
+
+  [[services.http_checks]]
+    interval = "30s"
+    grace_period = "10s"
+    method = "get"
+    path = "/"
+    protocol = "http"
+    restart_limit = 0
+    timeout = "5s"
+    tls_skip_verify = false
+    [services.http_checks.headers]
+      User-Agent = "Fly-Health-Check"
+
+# Process groups
+[processes]
+  app = "node --enable-source-maps --unhandled-rejections=strict ./dist/server/entry.mjs"
+
+# Resource allocation
+[vm]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+  size = "shared-cpu-1x"
+
+# Deployment configuration
+[deploy]
+  release_command = "echo 'Deployment started'"
+
+# Secrets (will be set via flyctl)
+# FLY_API_TOKEN
+# DATABASE_URL (if needed in future)
+# REDIS_URL (if needed in future)
+# SENTRY_DSN (for error tracking)
+
+# Regional scaling (can be extended)
+# [[regions]]
+#   region = "cdg"  # Paris
+#   min_machines_running = 1
+#
+# [[regions]]
+#   region = "lhr"  # London (for UK users)
+#   min_machines_running = 0
