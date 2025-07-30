@@ -8,8 +8,8 @@ jobs:
   quality-checks:
     name: Quality Checks
     # Skip redundant checks on develop→main PRs
-    if: !(github.base_ref == 'main' && github.head_ref == 'develop')
-    uses: NextNodeSolutions/github-actions/workflows/packs/quality-checks.yml@main
+    if: ${{ !(github.base_ref == 'main' && github.head_ref == 'develop') }}
+    uses: NextNodeSolutions/github-actions/.github/workflows/pack-quality-checks.yml@main
     with:
       run-lint: true
       run-typecheck: true
