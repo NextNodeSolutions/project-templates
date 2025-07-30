@@ -7,6 +7,8 @@ on:
 
 env:
   FLY_APP_NAME: prod-{{project_name}}
+  FLY_ORG: "{{fly_org}}"
+  NO_DEPLOY: "{{no_deploy}}"
   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
   WEBSITE_URL: "{{website_url}}"
 
@@ -14,6 +16,7 @@ jobs:
   quality-checks:
     name: Quality Checks
     uses: ./.github/workflows/quality-checks.yml
+    if: github.run_number > 1
     with:
       run-lint: true
       run-typecheck: true
@@ -41,6 +44,11 @@ jobs:
 
       - name: Deploy & Health Check
         run: |
+          # Create app if it doesn't exist
+          if ! flyctl apps list | grep -q "${{ env.FLY_APP_NAME }}"; then
+            flyctl apps create ${{ env.FLY_APP_NAME }} --org "${{ env.FLY_ORG }}"
+          fi
+          
           # Ensure IPs are allocated
           if ! flyctl ips list --app ${{ env.FLY_APP_NAME }} 2>/dev/null | grep -q "v4"; then
             flyctl ips allocate-v4 --app ${{ env.FLY_APP_NAME }} --yes
@@ -186,6 +194,8 @@ jobs:
             else
               echo "✅ https://${{ env.WEBSITE_URL }}"
             fi
+          elif [[ "${{ needs.deploy.result }}" == "skipped" ]]; then
+            echo "ℹ️ Deployment skipped (first commit or manual skip)"
           else
             exit 1
           fi

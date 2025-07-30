@@ -4,9 +4,23 @@ on:
   push:
     branches: [develop]
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy from'
+        required: false
+        default: 'develop'
+        type: choice
+        options:
+          - develop
+          - main
+
+# Only run if there are actual changes or manual trigger
+# Skip first commit to avoid deployment during initial setup
 
 env:
   FLY_APP_NAME: dev-{{project_name}}
+  FLY_ORG: "{{fly_org}}"
+  NO_DEPLOY: "{{no_deploy}}"
   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
   WEBSITE_URL: "{{website_url}}"
 
@@ -14,6 +28,7 @@ jobs:
   quality-checks:
     name: Quality Checks
     uses: ./.github/workflows/quality-checks.yml
+    if: github.run_number > 1
     with:
       run-lint: true
       run-typecheck: true
@@ -28,6 +43,7 @@ jobs:
     name: Deploy to Fly.io Dev
     runs-on: ubuntu-latest
     needs: quality-checks
+    if: github.run_number > 1
     environment: development
     outputs:
       fly_url: ${{ steps.deploy_info.outputs.fly_url }}
@@ -35,12 +51,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch || 'develop' }}
 
       - name: Setup Fly CLI
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Initialize & Deploy
         run: |
+          # Create app if it doesn't exist
+          if ! flyctl apps list | grep -q "${{ env.FLY_APP_NAME }}"; then
+            flyctl apps create ${{ env.FLY_APP_NAME }} --org "${{ env.FLY_ORG }}"
+          fi
+          
           # Ensure IPs are allocated
           if ! flyctl ips list --app ${{ env.FLY_APP_NAME }} 2>/dev/null | grep -q "v4"; then
             flyctl ips allocate-v4 --app ${{ env.FLY_APP_NAME }} --yes
@@ -176,6 +199,8 @@ jobs:
             else
               echo "✅ https://dev.${{ env.WEBSITE_URL }}"
             fi
+          elif [[ "${{ needs.deploy.result }}" == "skipped" ]]; then
+            echo "ℹ️ Deployment skipped (first commit or manual skip)"
           else
             exit 1
           fi
