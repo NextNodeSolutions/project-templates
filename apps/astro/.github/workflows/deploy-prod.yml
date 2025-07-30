@@ -8,6 +8,7 @@ on:
 env:
   FLY_APP_NAME: prod-{{project_name}}
   FLY_ORG: "{{fly_org}}"
+  NO_DEPLOY: "{{no_deploy}}"
   CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
   WEBSITE_URL: "{{website_url}}"
 

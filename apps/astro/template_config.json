@@ -90,6 +90,12 @@
 				"key": "{{fly_org}}",
 				"value": "{{fly_org}}",
 				"default": "nextnode"
+			},
+			{
+				"name": "no_deploy",
+				"key": "{{no_deploy}}",
+				"value": "{{no_deploy}}",
+				"default": "false"
 			}
 		]
 	},
@@ -112,6 +118,12 @@
 				"key": "{{fly_org}}",
 				"value": "{{fly_org}}",
 				"default": "nextnode"
+			},
+			{
+				"name": "no_deploy",
+				"key": "{{no_deploy}}",
+				"value": "{{no_deploy}}",
+				"default": "false"
 			}
 		]
 	},
