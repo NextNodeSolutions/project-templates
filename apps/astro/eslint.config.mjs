@@ -3,18 +3,22 @@ import nextnodeEslint from '@nextnode/eslint-plugin/base'
 export default [
 	...nextnodeEslint,
 	{
+		ignores: ['dist/**', 'node_modules/**', '.astro/**', '**/.astro/**'],
+	},
+	{
 		files: ['**/*.ts', '**/*.tsx'],
 		languageOptions: {
 			parserOptions: {
-				project: './tsconfig.eslint.json',
+				project: './tsconfig.json',
 			},
 		},
 	},
 	{
-		files: ['**/*.test.ts', '**/*.spec.ts'],
+		files: ['astro.config.mjs'],
 		languageOptions: {
-			parserOptions: {
-				project: './tsconfig.vitest.json',
+			globals: {
+				process: 'readonly',
+				console: 'readonly',
 			},
 		},
 	},

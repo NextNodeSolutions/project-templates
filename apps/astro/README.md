@@ -9,8 +9,8 @@ A modern, high-performance Astro template with TypeScript, Tailwind CSS, and bes
 - 🔧 **TypeScript** - Type-safe development experience
 - 🧪 **Vitest** - Fast unit testing framework
 - 📝 **ESLint** - Code linting and formatting
-- 🎯 **Biome** - Fast formatter and linter
-- 📦 **Changesets** - Version management and changelog generation
+- 🎯 **Prettier** - Code formatting
+- 🚀 **CI/CD** - Automated deployment with GitHub Actions
 - 🐶 **Husky** - Git hooks for code quality
 - 🔄 **Commitlint** - Conventional commit messages
 
@@ -51,7 +51,7 @@ pnpm dev
 - `pnpm test:coverage` - Run tests with coverage
 - `pnpm lint` - Lint code
 - `pnpm lint:fix` - Fix linting issues
-- `pnpm format` - Format code with Biome
+- `pnpm format` - Format code with Prettier
 - `pnpm type-check` - Run TypeScript type checking
 
 ## Project Structure
@@ -71,7 +71,7 @@ src/
 - `astro.config.mjs` - Astro configuration
 - `tailwind.config.js` - Tailwind CSS configuration
 - `tsconfig.json` - TypeScript configuration
-- `biome.json` - Biome formatter/linter configuration
+- `.prettierrc` - Prettier formatter configuration
 - `eslint.config.mjs` - ESLint configuration
 
 ### Styling
@@ -94,7 +94,7 @@ The template includes several pre-built components:
 This template includes several tools to maintain code quality:
 
 1. **ESLint** - Lints your code for potential errors
-2. **Biome** - Formats your code consistently
+2. **Prettier** - Formats your code consistently
 3. **Husky** - Runs pre-commit hooks
 4. **Commitlint** - Ensures conventional commit messages
 
@@ -102,13 +102,13 @@ This template includes several tools to maintain code quality:
 
 Tests are written using Vitest and can be found in the `src/` directory with `.spec.ts` or `.test.ts` extensions.
 
-### Version Management
+### CI/CD Workflows
 
-This template uses Changesets for version management:
+This template includes automated deployment workflows:
 
-1. Create a changeset: `pnpm changeset`
-2. Version packages: `pnpm changeset:version`
-3. Publish packages: `pnpm changeset:publish`
+- **Development**: Auto-deploy to `dev-{project}.fly.dev` on push to `develop`
+- **Production**: Auto-deploy to custom domain on push to `main`
+- **Quality Checks**: Lint, typecheck, test, and build on every PR
 
 ## Deployment
 

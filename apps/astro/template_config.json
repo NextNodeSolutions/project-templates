@@ -84,6 +84,18 @@
 				"key": "{{website_url}}",
 				"value": "{{website_url}}",
 				"default": ""
+			},
+			{
+				"name": "fly_org",
+				"key": "{{fly_org}}",
+				"value": "{{fly_org}}",
+				"default": "nextnode"
+			},
+			{
+				"name": "no_deploy",
+				"key": "{{no_deploy}}",
+				"value": "{{no_deploy}}",
+				"default": "false"
 			}
 		]
 	},
@@ -100,6 +112,18 @@
 				"key": "{{website_url}}",
 				"value": "{{website_url}}",
 				"default": ""
+			},
+			{
+				"name": "fly_org",
+				"key": "{{fly_org}}",
+				"value": "{{fly_org}}",
+				"default": "nextnode"
+			},
+			{
+				"name": "no_deploy",
+				"key": "{{no_deploy}}",
+				"value": "{{no_deploy}}",
+				"default": "false"
 			}
 		]
 	},
