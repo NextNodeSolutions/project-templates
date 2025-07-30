@@ -16,10 +16,10 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Development
+    name: Deploy
     # Skip first commit to avoid deployment during initial setup
     if: github.run_number > 1
-    uses: NextNodeSolutions/github-actions/workflows/packs/deploy-dev.yml@main
+    uses: NextNodeSolutions/github-actions/.github/workflows/pack-deploy-dev.yml@main
     with:
       app-name: 'dev-{{project_name}}'
       fly-org: '{{fly_org}}'

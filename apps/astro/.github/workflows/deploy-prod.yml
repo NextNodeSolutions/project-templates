@@ -7,10 +7,10 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Production
+    name: Deploy
     # Skip first commit to avoid deployment during initial setup
     if: github.run_number > 1
-    uses: NextNodeSolutions/github-actions/workflows/packs/deploy-prod.yml@main
+    uses: NextNodeSolutions/github-actions/.github/workflows/pack-deploy-prod.yml@main
     with:
       app-name: 'prod-{{project_name}}'
       fly-org: '{{fly_org}}'
