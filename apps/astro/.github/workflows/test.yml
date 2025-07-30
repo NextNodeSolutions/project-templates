@@ -1,19 +1,21 @@
 name: Tests
 
 on:
-    pull_request:
-        branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
 
 jobs:
-    quality-checks:
-        name: Quality Checks
-        uses: ./.github/workflows/quality-checks.yml
-        with:
-            run-lint: true
-            run-typecheck: true
-            run-test: true
-            run-build: false
-            run-security: false
-            test-coverage: false
-            node-version: '22'
-            pnpm-version: '10.11.0'
+  quality-checks:
+    name: Quality Checks
+    # Skip redundant checks on develop→main PRs
+    if: !(github.base_ref == 'main' && github.head_ref == 'develop')
+    uses: NextNodeSolutions/github-actions/workflows/packs/quality-checks.yml@main
+    with:
+      run-lint: true
+      run-typecheck: true
+      run-test: true
+      run-build: false
+      run-security: false
+      test-coverage: false
+      node-version: '22'
+      pnpm-version: '10.11.0'
