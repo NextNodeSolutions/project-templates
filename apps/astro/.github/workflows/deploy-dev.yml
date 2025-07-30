@@ -24,6 +24,7 @@ jobs:
       app-name: 'dev-{{project_name}}'
       fly-org: '{{fly_org}}'
       domain: '{{website_url}}'
+      pnpm-version: '10.12.4'
       checkout-ref: ${{ github.event.inputs.branch || 'develop' }}
     secrets: inherit
 
