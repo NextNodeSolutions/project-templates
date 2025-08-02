@@ -27,4 +27,3 @@ jobs:
       pnpm-version: '10.12.4'
       checkout-ref: ${{ github.event.inputs.branch || 'develop' }}
     secrets: inherit
-

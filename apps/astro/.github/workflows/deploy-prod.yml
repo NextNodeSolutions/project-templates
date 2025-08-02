@@ -17,4 +17,3 @@ jobs:
       domain: '{{website_url}}'
       pnpm-version: '10.12.4'
     secrets: inherit
-
