@@ -32,6 +32,7 @@
 		"src/**/*.ts",
 		"src/**/*.test.ts",
 		"src/**/*.spec.ts",
+		"types/**/*.ts",
 		"*.config.*",
 		"eslint.config.mjs",
 		"vitest.config.ts"

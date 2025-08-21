@@ -118,11 +118,9 @@ Templates use `template_config.json` to define variable replacements:
 3. Processes file content with variable substitutions
 4. Copies processed template to target location
 
-### Multi-Config TypeScript Setup (Library)
-- `tsconfig.json`: Base configuration for development
-- `tsconfig.build.json`: Production build configuration  
-- `tsconfig.eslint.json`: ESLint-specific TypeScript settings
-- `tsconfig.vitest.json`: Test-specific configuration
+### TypeScript Configuration (Library)
+- `tsconfig.json`: Base configuration for development and validation
+- `tsconfig.build.json`: Production build configuration with declaration files
 
 ### Deployment Strategy (Astro)
 - Docker containerization with multi-stage builds
