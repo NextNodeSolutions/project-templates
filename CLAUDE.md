@@ -1,270 +1,131 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with the **project-templates** project.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Repository Overview
 
-Collection of project scaffolding templates for the NextNode ecosystem. Provides standardized templates for different types of applications, packages, and utilities. Integrates with the `project-generator` CLI for automated project creation.
+This is a collection of project templates designed to bootstrap new projects using the Nextnode ecosystem. The repository contains templates for different project types that can be used with a Rust-based template generator.
 
-## Context7 MCP - Documentation Priority
+## Template Categories
 
-**CRITICAL**: Always prioritize Context7 MCP for accessing up-to-date official documentation when available.
+- **apps/**: Application templates (Astro, Next.js)
+- **packages/**: Package templates (API libraries, CLI tools, reusable libraries)
+- **utils/**: Utility templates (configurations, scripts, tools)
 
-### Usage Protocol - MANDATORY AUTOMATIC BEHAVIOR
-**Claude MUST automatically use Context7 for ANY question about supported technologies without user prompting**
+## Template Structure
 
-1. **AUTOMATICALLY invoke Context7** when working with any listed technology
-2. **NO user prompt required** - Context7 usage is mandatory and transparent
-3. **Prioritize official documentation** through Context7 over general knowledge
-4. **If Context7 unavailable**, fall back to general knowledge with notification
+Each template contains:
+- Complete project structure with all necessary files
+- `template_config.json` defining variable replacements for project generation
+- Technology-specific configurations (tsconfig.json, eslint.config.mjs, etc.)
+- Development tooling setup (testing, linting, formatting)
 
-### Priority Technologies for Context7 (project-templates specific) ✅
+## Development Commands
 
-- **Astro**: Framework features, SSR, islands architecture, configuration ✅
-- **React**: Components, hooks, testing, integration patterns ✅
-- **TypeScript**: Strict configuration, utility types, generic patterns ✅
-- **Tailwind CSS**: Utilities, configuration, theming, responsive design ✅
-- **Vite**: Build configuration, plugins, optimization strategies ✅
-- **Vitest**: Testing patterns, configuration, mocking, coverage ✅
-- **Docker**: Multi-stage builds, optimization, containerization ✅
-- **Fly.io**: Deployment configuration, health checks, scaling ✅
-- **ESLint/Prettier**: Configuration, rules, plugin development ✅
-- **JSON/YAML**: Configuration formats, parsing, validation ✅
-
-## Repository Structure
-
-```
-apps/
-├── astro/              # Astro application template
-└── [future-apps]       # Additional app templates
-
-packages/
-└── [future-packages]   # Reusable package templates
-
-[template-categories]/
-└── [future-templates]  # Additional template categories
-```
-
-## Available Templates
-
-### apps/astro/
-Complete Astro application template with modern tooling:
-
-**Features:**
-- Astro 5.x with SSR configuration
-- React integration for interactive components
-- Tailwind CSS for styling
-- TypeScript with strict configuration
-- Vitest for testing
-- ESLint and Prettier for code quality
-- Docker deployment setup
-- Fly.io deployment configuration
-
-**Structure:**
-```
-astro/
-├── src/
-│   ├── components/     # React/Astro components
-│   ├── pages/         # File-based routing
-│   ├── layouts/       # Page layouts
-│   └── styles/        # Global styles
-├── public/            # Static assets
-├── tests/            # Test files
-├── Dockerfile        # Container configuration
-├── fly.toml          # Fly.io deployment
-└── template_config.json  # Generator configuration
-```
-
-## Template Configuration
-
-### template_config.json
-Each template includes a configuration file for the generator:
-
-```json
-{
-  "name": "astro-app",
-  "version": "1.0.0",
-  "description": "Modern Astro application template",
-  "category": "app",
-  "variables": {
-    "PROJECT_NAME": {
-      "description": "Project name",
-      "default": "my-astro-app",
-      "required": true
-    },
-    "PROJECT_DESCRIPTION": {
-      "description": "Project description", 
-      "default": "A new Astro application",
-      "required": false
-    }
-  },
-  "dependencies": {
-    "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
-  },
-  "postGenerate": {
-    "commands": [
-      "pnpm install",
-      "pnpm lint:fix"
-    ],
-    "instructions": [
-      "Run 'pnpm dev' to start development server",
-      "Update README.md with project-specific information"
-    ]
-  }
-}
-```
-
-### Variable Substitution
-
-Templates support variable substitution in:
-- **File names**: `{{PROJECT_NAME}}.config.js`
-- **File contents**: `"name": "{{PROJECT_NAME}}"`
-- **Directory names**: `src/{{FEATURE_NAME}}/`
-
-**Common Variables:**
-- `{{PROJECT_NAME}}`: Project name (kebab-case)
-- `{{PROJECT_TITLE}}`: Project title (Title Case)
-- `{{PROJECT_DESCRIPTION}}`: Project description
-- `{{AUTHOR_NAME}}`: Author name
-- `{{AUTHOR_EMAIL}}`: Author email
-
-## Creating New Templates
-
-### Template Structure
-1. **Create template directory** in appropriate category (`apps/`, `packages/`, etc.)
-2. **Add template_config.json** with configuration
-3. **Create template files** with variable substitution
-4. **Test template** with project-generator CLI
-
-### Best Practices
-
-#### File Organization
-```
-template-name/
-├── template_config.json    # Required: Template metadata
-├── README.md              # Template documentation
-├── src/                   # Source code structure
-├── tests/                 # Test files
-├── .gitignore            # Git ignore patterns
-├── package.json          # Package configuration with variables
-└── [config-files]        # Additional configuration
-```
-
-#### Variable Usage
-- Use consistent variable naming across templates
-- Provide sensible defaults for optional variables
-- Document all variables in template_config.json
-- Test variable substitution thoroughly
-
-#### Code Quality
-- Follow NextNode TypeScript standards
-- Include ESLint and Prettier configuration
-- Provide comprehensive test examples
-- Include proper error handling patterns
-
-## Template Standards
-
-### TypeScript Configuration
-All templates must include strict TypeScript configuration:
-
-```json
-// tsconfig.json
-{
-  "compilerOptions": {
-    "strict": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true
-  }
-}
-```
-
-### Code Quality Tools
-Required tools in all templates:
-- **ESLint**: With `@nextnode/eslint-plugin`
-- **Prettier**: Consistent formatting rules
-- **Husky**: Git hooks for quality enforcement
-- **Commitlint**: Conventional commit validation
-
-### Testing Setup
-Include testing configuration:
-- **Vitest**: For unit and integration tests  
-- **Testing Library**: For component testing (React templates)
-- **Coverage**: Minimum 80% coverage target
-- **CI integration**: GitHub Actions workflow examples
-
-### Deployment Configuration
-Templates should include:
-- **Dockerfile**: Multi-stage build for production
-- **fly.toml**: Fly.io deployment configuration
-- **Health checks**: Application monitoring endpoints
-- **Environment**: Production-ready configuration
-
-## Integration with Project Generator
-
-### CLI Usage
+### Root Level (Workspace Management)
 ```bash
-# Use local template
-project-generator generate --template astro --name my-project
-
-# With custom variables
-project-generator generate --template astro --name my-project \
-  --var PROJECT_DESCRIPTION="My awesome Astro app" \
-  --var AUTHOR_NAME="John Doe"
+pnpm format              # Format all files with Biome
+pnpm commitlint         # Validate commit messages
 ```
 
-### Configuration File
-```yaml
-# generator-config.yml
-template:
-  name: "astro"
-  source: "local"
-  path: "../project-templates/apps/astro"
+### Astro Template (apps/astro/)
+```bash
+# Development
+pnpm dev                # Start development server
+pnpm build              # Build for production (includes astro check)
+pnpm preview            # Preview production build
 
-project:
-  name: "my-astro-app"
-  description: "A new Astro application"
-
-variables:
-  AUTHOR_NAME: "Developer Name"
-  AUTHOR_EMAIL: "dev@example.com"
+# Quality Assurance
+pnpm lint               # ESLint with @nextnode/eslint-plugin
+pnpm lint:fix           # Auto-fix ESLint issues
+pnpm type-check         # TypeScript validation
+pnpm test               # Run tests with Vitest
+pnpm test:coverage      # Run tests with coverage
+pnpm test:watch         # Watch mode testing
+pnpm format             # Format with Prettier
 ```
 
-## Template Testing
+### Library Template (packages/library/)
+```bash
+# Build & Publishing
+pnpm build              # Compile TypeScript to dist/
+pnpm clean              # Remove dist/ directory
+pnpm prepublishOnly     # Pre-publish build hook
 
-### Manual Testing
-1. **Generate project** using template
-2. **Run all commands** (install, build, test, lint)
-3. **Verify structure** matches expected output
-4. **Test customization** with different variables
+# Changesets (Version Management)
+pnpm changeset          # Create a changeset
+pnpm changeset:version  # Bump versions based on changesets
+pnpm changeset:publish  # Publish to NPM
 
-### Automated Testing
-Include tests in template directory:
+# Quality Assurance
+pnpm lint               # ESLint with zero warnings
+pnpm type-check         # TypeScript type checking
+pnpm test               # Run test suite
+pnpm test:coverage      # Coverage reporting
+pnpm format             # Biome formatting
 ```
-tests/
-├── template.test.js       # Template generation tests
-├── structure.test.js      # File structure validation  
-├── build.test.js         # Build process tests
-└── integration.test.js   # End-to-end tests
-```
 
-## Maintenance
+## Technology Stack
 
-### Version Management
-- Use semantic versioning for templates
-- Update dependencies regularly
-- Test templates with latest tool versions
-- Maintain changelog for template updates
+### Astro Template
+- **Framework**: Astro 5.x with TypeScript
+- **Styling**: Tailwind CSS v4 with Vite integration
+- **Testing**: Vitest with Testing Library and coverage
+- **Linting**: ESLint with @nextnode/eslint-plugin
+- **Formatting**: Prettier with Astro and Tailwind plugins
+- **Deployment**: Fly.io with Docker, GitHub Actions CI/CD
 
-### Documentation
-- Keep README.md current for each template
-- Document breaking changes clearly
-- Provide migration guides for major updates
-- Include troubleshooting sections
+### Library Template
+- **Language**: TypeScript with strict configuration
+- **Build**: TSC with multiple tsconfig files (build, eslint, vitest)
+- **Testing**: Vitest with coverage
+- **Versioning**: Changesets for semantic versioning
+- **Publishing**: NPM with @nextnode scope
+- **Formatting**: Biome (replaces Prettier)
 
-## Related Projects
-- See [../CLAUDE.md](../CLAUDE.md) for multi-repo overview
-- Used by [../project-generator/](../project-generator/) CLI
-- Based on patterns from [../nextnode-front/](../nextnode-front/)
-- CI/CD integration via [../github-actions/](../github-actions/)
+## Template Configuration System
+
+Templates use `template_config.json` to define variable replacements:
+- File-based replacements for package.json, README.md, etc.
+- Supports string and array value types
+- Handles placeholders like `{{project_name}}`, `{{project_description}}`
+- Default values for optional variables
+
+## Development Standards
+
+### Package Management
+- **Required**: pnpm (configured in packageManager field)
+- **Node Version**: >=20.0.0 (specified in engines)
+- **Workspace**: Uses pnpm-workspace.yaml for monorepo structure
+
+### Code Quality Requirements
+- ESLint with @nextnode/eslint-plugin and zero warnings policy
+- TypeScript strict mode configuration
+- Conventional commits with commitlint
+- Pre-commit hooks with husky and lint-staged
+- 100% test coverage expectation for new utilities
+
+### Git Workflow
+- Conventional commits enforced via commitlint
+- Husky pre-commit hooks for quality checks
+- GitHub Actions for CI/CD (in Astro template)
+
+## Architecture Notes
+
+### Template Generation Flow
+1. Rust generator selects template directory
+2. Reads `template_config.json` for replacement rules
+3. Processes file content with variable substitutions
+4. Copies processed template to target location
+
+### Multi-Config TypeScript Setup (Library)
+- `tsconfig.json`: Base configuration for development
+- `tsconfig.build.json`: Production build configuration  
+- `tsconfig.eslint.json`: ESLint-specific TypeScript settings
+- `tsconfig.vitest.json`: Test-specific configuration
+
+### Deployment Strategy (Astro)
+- Docker containerization with multi-stage builds
+- Fly.io deployment with automatic scaling
+- Environment-based deployments (dev/prod workflows)
+- Health check endpoints configured

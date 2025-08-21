@@ -13,6 +13,7 @@
   "author": "Walid M",
   "main": "./dist/index.js",
   "scripts": {
+    "prebuild": "pnpm clean",
     "build": "tsc -p tsconfig.build.json",
     "changeset": "changeset",
     "changeset:publish": "changeset publish",
@@ -23,8 +24,8 @@
     "lint": "eslint . --max-warnings 0",
     "lint-staged": "lint-staged",
     "lint:fix": "eslint . --max-warnings 0 --fix",
-    "prebuild": "npm run clean",
     "prepare": "husky",
+    "prepublishOnly": "pnpm build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
