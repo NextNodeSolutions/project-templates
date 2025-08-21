@@ -32,6 +32,16 @@
 		]
 	},
 	{
+		"files_to_replace": [".changeset/config.json"],
+		"replacements": [
+			{
+				"name": "repository",
+				"key": "NextNodeSolutions/apps_eslint-plugin",
+				"value": "NextNodeSolutions/{{project_name}}"
+			}
+		]
+	},
+	{
 		"files_to_replace": ["README.md"],
 		"replacements": [
 			{
