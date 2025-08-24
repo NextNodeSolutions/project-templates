@@ -7,10 +7,9 @@
   "author": "Nextnode",
   "scripts": {
     "commitlint": "commitlint --edit",
-    "format": "prettier --write .",
-    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write . --log-level warn",
+    "lint": "eslint . --max-warnings 0 --fix",
     "lint-staged": "lint-staged",
-    "lint:fix": "eslint . --max-warnings 0 --fix",
     "prepare": "husky",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

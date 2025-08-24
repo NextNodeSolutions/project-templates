@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "husky",
     "commitlint": "commitlint --edit",
-    "format": "biome check --write .",
+    "format": "biome check --write . --no-errors-on-unmatched",
     "lint-staged": "lint-staged"
   },
   "devDependencies": {
