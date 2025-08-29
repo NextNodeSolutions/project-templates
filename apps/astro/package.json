@@ -7,22 +7,24 @@
   "author": "Nextnode",
   "scripts": {
     "commitlint": "commitlint --edit",
-    "format": "prettier --write .",
-    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write . --log-level warn",
+    "lint": "eslint . --max-warnings 0 --fix",
     "lint-staged": "lint-staged",
-    "lint:fix": "eslint . --max-warnings 0 --fix",
     "prepare": "husky",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "type-check": "tsc --noEmit",
+    "type-check": "pnpm type-config && astro check && tsc --noEmit",
+    "type-config": "generate-config && prettier --write types/config.d.ts",
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.2",
+    "@nextnode/config-manager": "^3.0.1",
+    "@nextnode/logger": "^0.2.3",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.10.1",
     "tailwindcss": "^4.1.11"
@@ -52,6 +54,6 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.12.4",
   "type": "module"
 }
