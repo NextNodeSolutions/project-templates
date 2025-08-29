@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { formatDate } from './date'
+import { formatDate } from './date.js'
 
 describe('formatDate', () => {
 	it('should format a date with default options', () => {
