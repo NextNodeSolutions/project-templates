@@ -58,6 +58,11 @@
   },
   "packageManager": "pnpm@10.11.0",
   "type": "module",
+  "files": [
+    "CHANGELOG.md",
+    "README.md",
+    "dist/**/*"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
