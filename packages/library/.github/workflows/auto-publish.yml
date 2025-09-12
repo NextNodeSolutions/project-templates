@@ -1,0 +1,31 @@
+name: Auto Publish
+
+# This workflow listens for repository_dispatch events sent by the version-management workflow
+# When a version PR is merged, it automatically triggers the publish process
+
+on:
+  repository_dispatch:
+    types: [version-merged]
+
+concurrency:
+  group: auto-publish-${{ github.event.client_payload.data.version }}
+  cancel-in-progress: false
+
+jobs:
+  auto-publish:
+    name: Auto Publish After Version Merge
+    uses: NextNodeSolutions/github-actions/.github/workflows/publish-release.yml@main
+    permissions:
+      contents: write
+      id-token: write
+      actions: read
+      packages: write
+    with:
+      node-version: '24'
+      pnpm-version: '10.11.0'
+      publish-script: 'changeset:publish'
+      build-script: 'build'
+      enable-provenance: true
+      create-github-release: true
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
