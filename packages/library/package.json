@@ -31,6 +31,9 @@
     "test:watch": "vitest",
     "type-check": "tsc --noEmit"
   },
+  "dependencies": {
+    "@nextnode/logger": "^0.2.4"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.2.3",
     "@changesets/changelog-github": "^0.5.1",

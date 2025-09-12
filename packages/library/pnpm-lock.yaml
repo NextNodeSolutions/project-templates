@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@nextnode/logger':
+        specifier: ^0.2.4
+        version: 0.2.4(eslint@9.27.0(jiti@2.4.2))
     devDependencies:
       '@biomejs/biome':
         specifier: ^2.2.3
@@ -530,6 +534,12 @@ packages:
   '@nextnode/eslint-plugin@1.2.0':
     resolution: {integrity: sha512-aXwB0+aHPr2iWKpvj/bXsBKnl4OrW9S0C9YCTQXsPsw9jbOBaYlqgTr9QMIpQK/4gKyS1nO+iQcaEr7XF50NhA==}
     engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      eslint: ^9.22.0
+
+  '@nextnode/logger@0.2.4':
+    resolution: {integrity: sha512-kXAYYmtr3pCdRNTAng9asCx3aVI0P0X3s6MltlB90ONv/69b4uaz/Dp2lVTO8CTmQdYZFctwH3TgxrY/ZD2FjQ==}
+    engines: {node: '>=20.0.0'}
     peerDependencies:
       eslint: ^9.22.0
 
@@ -3244,6 +3254,10 @@ snapshots:
     transitivePeerDependencies:
       - eslint-plugin-import
       - supports-color
+
+  '@nextnode/logger@0.2.4(eslint@9.27.0(jiti@2.4.2))':
+    dependencies:
+      eslint: 9.27.0(jiti@2.4.2)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

@@ -23,7 +23,8 @@ library/
 ├── src/                     # Source code
 │   ├── lib/                # Core library modules
 │   ├── types/              # Type definitions
-│   ├── utils/              # Utility functions
+│   ├── utils/              # Utility functions (includes logger)
+│   ├── __tests__/          # Test files with examples
 │   └── index.ts            # Main export file
 ├── package.json            # Package configuration
 ├── tsconfig.json           # TypeScript config (development)
@@ -150,9 +151,127 @@ The `template_config.json` defines replaceable variables:
 - **husky**, **lint-staged**: Git hooks and pre-commit checks
 
 ### Production Dependencies
-- Template is designed to be lightweight
-- Add production dependencies based on library functionality
+- **@nextnode/logger**: Lightweight logging library with scope-based organization
+- Add other production dependencies based on library functionality  
 - Consider peer dependencies for framework integrations
+
+## Logging System
+
+The template includes a comprehensive logging system using `@nextnode/logger` with NextNode-specific conventions.
+
+### Logger Structure
+
+```typescript
+// Main loggers available
+import { 
+  logger,        // Main library logger
+  apiLogger,     // API-specific operations
+  coreLogger,    // Core functionality
+  utilsLogger,   // Utility functions
+  logDebug,      // Debug helper
+  logApiResponse,// API response helper
+  logError       // Error helper with context
+} from './utils/logger.js'
+```
+
+### Usage Examples
+
+#### Basic Logging
+```typescript
+import { coreLogger } from '../utils/logger.js'
+
+export const createClient = (options: ClientConfig) => {
+  coreLogger.info('Creating client instance', { 
+    hasApiKey: Boolean(options.apiKey) 
+  })
+  
+  // ... implementation
+  
+  coreLogger.info('Client created successfully')
+}
+```
+
+#### Error Logging with Context
+```typescript
+import { logError } from '../utils/logger.js'
+
+try {
+  // ... some operation
+} catch (error) {
+  logError(error, { 
+    operation: 'data-processing',
+    userId: user.id,
+    timestamp: Date.now()
+  })
+  throw error
+}
+```
+
+#### API Logging
+```typescript
+import { logApiResponse } from '../utils/logger.js'
+
+// Log API responses with status and optional data
+logApiResponse('POST', '/api/users', 201, { userId: 123 })
+logApiResponse('GET', '/api/health', 200)
+```
+
+#### Debug Logging
+```typescript
+import { logDebug } from '../utils/logger.js'
+
+// Log complex objects for debugging
+logDebug('Configuration loaded', { 
+  config, 
+  environment: process.env.NODE_ENV 
+})
+```
+
+### Logger Features
+
+- **Environment-aware**: Automatically formats for development (console) and production (JSON)
+- **Scoped prefixes**: Each logger has a specific prefix for easy filtering
+- **Location tracking**: Automatically captures call location in development
+- **Zero dependencies**: Lightweight with no external dependencies
+- **Type-safe**: Full TypeScript support with proper types
+- **Request tracking**: Automatic request ID generation for distributed tracing
+
+### Logging Best Practices
+
+1. **Use appropriate log levels**:
+   - `info`: Normal operation events
+   - `warn`: Warning conditions that should be noted
+   - `error`: Error conditions that require attention
+
+2. **Include relevant context**:
+   - Always provide meaningful context objects
+   - Include user IDs, request IDs, or operation identifiers
+   - Add timing information for performance monitoring
+
+3. **Use specialized loggers**:
+   - `coreLogger` for main library functionality
+   - `apiLogger` for HTTP/API operations
+   - `utilsLogger` for utility functions
+
+4. **Error handling**:
+   - Always use `logError` for caught exceptions
+   - Include original error and relevant context
+   - Don't log the same error multiple times in the call stack
+
+### Testing Logging
+
+The template includes comprehensive logger tests with mocking:
+
+```typescript
+// Mock the logger in tests
+vi.mock('../utils/logger.js', () => ({
+  coreLogger: { info: vi.fn() },
+  logError: vi.fn()
+}))
+
+// Test that logging occurs
+expect(coreLogger.info).toHaveBeenCalledWith('Expected message', { data })
+```
 
 ## Release Management
 
