@@ -42,6 +42,31 @@
 		]
 	},
 	{
+		"files_to_replace": ["src/index.ts"],
+		"replacements": [
+			{
+				"name": "name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			},
+			{
+				"name": "description",
+				"key": "{{project_description}}",
+				"value": "{{project_description}}"
+			}
+		]
+	},
+	{
+		"files_to_replace": ["src/utils/logger.ts"],
+		"replacements": [
+			{
+				"name": "logger-prefix",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			}
+		]
+	},
+	{
 		"files_to_replace": ["README.md"],
 		"replacements": [
 			{

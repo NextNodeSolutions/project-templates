@@ -1,6 +1,13 @@
 /**
- * @nextnode/functions-client
- * Client library for Nextnode Functions
+ * {{project_name}}
+ * {{project_description}}
  */
 
-export * from './formatting/date.js'
+// Main library exports
+export * from './lib/core.js'
+
+// Type exports
+export type * from './types/index.js'
+
+// Utility exports
+export * from './utils/index.js'
