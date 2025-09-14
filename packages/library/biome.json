@@ -1,5 +1,18 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+	"files": {
+		"includes": [
+			"**/*.js",
+			"**/*.jsx",
+			"**/*.ts",
+			"**/*.tsx",
+			"**/*.json",
+			"**/*.md",
+			"**/*.yml",
+			"!src/__tests__/fixtures/configs/invalid.json"
+		],
+		"ignoreUnknown": true
+	},
 	"formatter": {
 		"enabled": true,
 		"formatWithErrors": false,
@@ -7,9 +20,6 @@
 		"indentWidth": 4,
 		"lineEnding": "lf",
 		"lineWidth": 80
-	},
-	"organizeImports": {
-		"enabled": false
 	},
 	"linter": {
 		"enabled": false
