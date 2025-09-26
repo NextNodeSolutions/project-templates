@@ -1,0 +1,14 @@
+{
+	"server": {
+		"host": "localhost",
+		"port": 4321
+	},
+	"logging": {
+		"level": "debug",
+		"format": "console"
+	},
+	"features": {
+		"hotReload": true,
+		"devtools": true
+	}
+}

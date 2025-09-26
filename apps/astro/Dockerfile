@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
 # Build arguments for customization
-ARG NODE_VERSION=22
-ARG PNPM_VERSION=10.11.0
+ARG NODE_VERSION=24
+ARG PNPM_VERSION=10.12.4
 ARG APP_PORT=4321
 
 # Stage 1: Build environment with all dependencies
@@ -46,7 +46,9 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 # Copy source code (optimized order for layer caching)
 COPY --chown=astro:astro public ./public/
 COPY --chown=astro:astro src ./src/
-COPY --chown=astro:astro astro.config.mjs tsconfig.json ./
+COPY --chown=astro:astro config ./config/
+COPY --chown=astro:astro types ./types/
+COPY --chown=astro:astro astro.config.mjs tsconfig.json biome.json ./
 
 # Build and clean in single layer  
 RUN pnpm run build && \

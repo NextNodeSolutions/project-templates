@@ -62,7 +62,27 @@
 		]
 	},
 	{
-		"files_to_replace": ["docker-compose.yml"],
+		"files_to_replace": ["config/default.json", "config/dev.json", "config/prod.json", "config/test.json"],
+		"replacements": [
+			{
+				"name": "project_name",
+				"key": "{{project_name}}",
+				"value": "{{project_name}}"
+			},
+			{
+				"name": "project_version",
+				"key": "{{project_version}}",
+				"value": "{{project_version}}"
+			},
+			{
+				"name": "project_description",
+				"key": "{{project_description}}",
+				"value": "{{project_description}}"
+			}
+		]
+	},
+	{
+		"files_to_replace": ["src/lib/logging/index.ts"],
 		"replacements": [
 			{
 				"name": "project_name",
@@ -80,22 +100,10 @@
 				"value": "{{project_name}}"
 			},
 			{
-				"name": "website_url",
-				"key": "{{website_url}}",
-				"value": "{{website_url}}",
+				"name": "dev_domain",
+				"key": "{{dev_domain}}",
+				"value": "{{dev_domain}}",
 				"default": ""
-			},
-			{
-				"name": "fly_org",
-				"key": "{{fly_org}}",
-				"value": "{{fly_org}}",
-				"default": "nextnode"
-			},
-			{
-				"name": "no_deploy",
-				"key": "{{no_deploy}}",
-				"value": "{{no_deploy}}",
-				"default": "false"
 			}
 		]
 	},
@@ -112,23 +120,11 @@
 				"key": "{{website_url}}",
 				"value": "{{website_url}}",
 				"default": ""
-			},
-			{
-				"name": "fly_org",
-				"key": "{{fly_org}}",
-				"value": "{{fly_org}}",
-				"default": "nextnode"
-			},
-			{
-				"name": "no_deploy",
-				"key": "{{no_deploy}}",
-				"value": "{{no_deploy}}",
-				"default": "false"
 			}
 		]
 	},
 	{
-		"files_to_replace": ["fly.toml"],
+		"files_to_replace": ["railway.toml"],
 		"replacements": [
 			{
 				"name": "project_name",

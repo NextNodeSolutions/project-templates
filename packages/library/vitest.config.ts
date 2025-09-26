@@ -1,21 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig, mergeConfig } from 'vitest/config'
+import baseConfig from '@nextnode/standards/vitest/backend'
 
-export default defineConfig({
-	test: {
-		globals: true,
-		environment: 'node',
-		include: ['src/**/*.{test,spec}.ts'],
-		coverage: {
-			provider: 'v8',
-			reporter: ['text', 'json', 'html'],
-			exclude: [
-				'node_modules/**',
-				'dist/**',
-				'**/*.d.ts',
-				'**/*.test.ts',
-				'**/*.config.ts',
-				'**/types.ts',
-			],
-		},
-	},
-})
+export default mergeConfig(baseConfig, defineConfig({}))
