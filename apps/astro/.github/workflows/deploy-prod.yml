@@ -1,29 +1,36 @@
 name: Deploy to Production
 
 on:
-  push:
-    branches: [main, master]
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy from'
-        required: false
-        default: 'main'
-        type: choice
-        options:
-          - main
-          - master
+    push:
+        branches: [main]
+    workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy
-    # Skip first commit to avoid deployment during initial setup
-    if: github.run_number > 1
-    uses: NextNodeSolutions/github-actions/.github/workflows/deploy.yml@main
-    with:
-      service-name: '{{project_name}}'
-      domain: '{{website_url}}'
-      environment: 'production'
-      pnpm-version: '10.12.4'
-      checkout-ref: ${{ github.event.inputs.branch || 'main' }}
-    secrets: inherit
+    quality-checks:
+        name: Quality Checks
+        uses: NextNodeSolutions/github-actions/.github/workflows/quality-checks.yml@main
+        with:
+            run-lint: true
+            run-typecheck: true
+            run-tests: true
+            run-build: true
+        secrets: inherit
+
+    deploy:
+        name: Deploy to Production
+        needs: quality-checks
+        uses: NextNodeSolutions/github-actions/.github/workflows/deploy.yml@main
+        with:
+            environment: 'production'
+            app-name: '{{project_name}}'
+            base-domain: '{{website_url}}'
+        secrets: inherit
+
+    dns:
+        name: Update DNS
+        needs: deploy
+        uses: NextNodeSolutions/github-actions/.github/workflows/dns.yml@main
+        with:
+            domain: ${{ needs.deploy.outputs.custom-domain }}
+            target: ${{ needs.deploy.outputs.railway-url }}
+        secrets: inherit

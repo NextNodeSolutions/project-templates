@@ -92,23 +92,7 @@
 		]
 	},
 	{
-		"files_to_replace": [".github/workflows/deploy-dev.yml"],
-		"replacements": [
-			{
-				"name": "project_name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
-			},
-			{
-				"name": "dev_domain",
-				"key": "{{dev_domain}}",
-				"value": "{{dev_domain}}",
-				"default": ""
-			}
-		]
-	},
-	{
-		"files_to_replace": [".github/workflows/deploy-prod.yml"],
+		"files_to_replace": [".github/workflows/deploy-dev.yml", ".github/workflows/deploy-prod.yml"],
 		"replacements": [
 			{
 				"name": "project_name",
