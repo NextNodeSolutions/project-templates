@@ -1,3 +1,3 @@
 export default {
-	extends: ['@commitlint/config-conventional'],
+	extends: ['@nextnode/standards/commitlint'],
 }

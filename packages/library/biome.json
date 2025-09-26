@@ -1,44 +1,6 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+	"extends": ["@nextnode/standards/biome"],
 	"files": {
-		"includes": [
-			"**/*.js",
-			"**/*.jsx",
-			"**/*.ts",
-			"**/*.tsx",
-			"**/*.json",
-			"**/*.md",
-			"**/*.yml",
-			"!src/__tests__/fixtures/configs/invalid.json"
-		],
-		"ignoreUnknown": true
-	},
-	"formatter": {
-		"enabled": true,
-		"formatWithErrors": false,
-		"indentStyle": "tab",
-		"indentWidth": 4,
-		"lineEnding": "lf",
-		"lineWidth": 80
-	},
-	"linter": {
-		"enabled": false
-	},
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
-	},
-	"javascript": {
-		"formatter": {
-			"jsxQuoteStyle": "double",
-			"quoteProperties": "asNeeded",
-			"trailingCommas": "all",
-			"semicolons": "asNeeded",
-			"arrowParentheses": "asNeeded",
-			"bracketSpacing": true,
-			"bracketSameLine": false,
-			"quoteStyle": "single"
-		}
+		"includes": ["!src/__tests__/fixtures/configs/invalid.json"]
 	}
 }
