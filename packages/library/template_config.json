@@ -2,98 +2,38 @@
 	{
 		"files_to_replace": ["package.json"],
 		"replacements": [
-			{ "name": "name", "key": "name", "value": "{{project_name}}" },
-			{
-				"name": "description",
-				"key": "description",
-				"value": "{{project_description}}"
-			},
-			{
-				"name": "author",
-				"key": "author",
-				"value": "{{project_author}}"
-			},
-			{
-				"name": "keywords",
-				"key": "keywords",
-				"value": "{{project_keywords}}",
-				"type": "array"
-			},
-			{
-				"name": "license",
-				"key": "license",
-				"value": "{{project_license}}"
-			},
-			{
-				"name": "version",
-				"key": "version",
-				"value": "{{project_version}}"
-			}
+			{ "name": "name", "attribute": "name" },
+			{ "name": "project_description", "attribute": "description" },
+			{ "name": "project_author", "attribute": "author" },
+			{ "name": "project_keywords", "attribute": "keywords", "type": "array" },
+			{ "name": "project_license", "attribute": "license" },
+			{ "name": "project_version", "attribute": "version" }
 		]
 	},
 	{
 		"files_to_replace": [".changeset/config.json"],
 		"replacements": [
-			{
-				"name": "repository",
-				"key": "NextNodeSolutions/apps_eslint-plugin",
-				"value": "NextNodeSolutions/{{project_name}}"
-			}
+			{ "name": "project_name" }
 		]
 	},
 	{
 		"files_to_replace": ["src/index.ts"],
 		"replacements": [
-			{
-				"name": "name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
-			},
-			{
-				"name": "description",
-				"key": "{{project_description}}",
-				"value": "{{project_description}}"
-			}
+			{ "name": "project_name" },
+			{ "name": "project_description" }
 		]
 	},
 	{
 		"files_to_replace": ["src/utils/logger.ts"],
 		"replacements": [
-			{
-				"name": "logger-prefix",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
-			}
+			{ "name": "project_name" }
 		]
 	},
 	{
 		"files_to_replace": ["README.md"],
 		"replacements": [
-			{
-				"name": "name",
-				"key": "@nextnode/functions-client",
-				"value": "{{project_name}}"
-			},
-			{
-				"name": "name",
-				"key": "pnpm add @nextnode/functions-client",
-				"value": "pnpm add {{project_name}}"
-			},
-			{
-				"name": "name",
-				"key": "import { NextnodeClient } from '@nextnode/functions-client';",
-				"value": "import { NextnodeClient } from '{{project_name}}';"
-			},
-			{
-				"name": "description",
-				"key": "A TypeScript client library for Nextnode Functions, designed to simplify function execution and API interactions.",
-				"value": "{{project_description}}"
-			},
-			{
-				"name": "author",
-				"key": "Walid M",
-				"value": "{{project_author}}"
-			}
+			{ "name": "name" },
+			{ "name": "project_description" }
 		]
 	}
 ]

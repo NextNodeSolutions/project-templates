@@ -1,17 +1,17 @@
-# @nextnode/functions-client
+# {{name}}
 
-A TypeScript client library for Nextnode Functions, designed to simplify function execution and API interactions.
+{{project_description}}
 
 ## Installation
 
 ```bash
-npm install @nextnode/functions-client
+npm install {{name}}
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add @nextnode/functions-client
+pnpm add {{name}}
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ pnpm add @nextnode/functions-client
 ### Basic Setup
 
 ```typescript
-import { NextnodeClient } from '@nextnode/functions-client';
+import { NextnodeClient } from '{{name}}';
 
 // Initialize the client
 const client = new NextnodeClient({

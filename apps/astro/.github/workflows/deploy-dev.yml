@@ -23,7 +23,7 @@ jobs:
         with:
             environment: 'development'
             app-name: '{{project_name}}'
-            base-domain: '{{dev_domain}}'
+            base-domain: '{{website_url}}'
         secrets: inherit
 
     dns:

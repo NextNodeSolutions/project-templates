@@ -2,92 +2,47 @@
 	{
 		"files_to_replace": ["package.json"],
 		"replacements": [
-			{ "name": "name", "key": "name", "value": "{{project_name}}" },
-			{
-				"name": "description",
-				"key": "description",
-				"value": "{{project_description}}"
-			},
-			{
-				"name": "author",
-				"key": "author",
-				"value": "{{project_author}}"
-			},
-			{
-				"name": "keywords",
-				"key": "keywords",
-				"value": "{{project_keywords}}",
-				"type": "array"
-			},
-			{
-				"name": "license",
-				"key": "license",
-				"value": "{{project_license}}"
-			},
-			{
-				"name": "version",
-				"key": "version",
-				"value": "{{project_version}}"
-			}
+			{ "name": "project_name", "attribute": "name" },
+			{ "name": "project_description", "attribute": "description" },
+			{ "name": "project_author", "attribute": "author" },
+			{ "name": "project_keywords", "attribute": "keywords", "type": "array" },
+			{ "name": "project_license", "attribute": "license" },
+			{ "name": "project_version", "attribute": "version" }
+		]
+	},
+	{
+		"files_to_replace": [
+			"README.md",
+			"config/default.json",
+			"config/dev.json",
+			"config/prod.json",
+			"config/test.json",
+			"src/lib/logging/index.ts",
+			"railway.toml",
+			".github/workflows/deploy-dev.yml",
+			".github/workflows/deploy-prod.yml"
+		],
+		"replacements": [
+			{ "name": "project_name" }
+		]
+	},
+	{
+		"files_to_replace": ["config/default.json", "config/dev.json", "config/prod.json", "config/test.json"],
+		"replacements": [
+			{ "name": "project_version" },
+			{ "name": "project_description" }
 		]
 	},
 	{
 		"files_to_replace": ["README.md"],
 		"replacements": [
 			{
-				"name": "title",
-				"key": "# Astro Template",
-				"value": "# {{project_name}}"
-			},
-			{
-				"name": "description",
-				"key": "A modern, high-performance Astro template with TypeScript, Tailwind CSS, and best practices for building fast websites and applications.",
-				"value": "{{project_description}}"
-			},
-			{
 				"name": "repository_url",
-				"key": "git clone <repository-url>",
-				"value": "git clone {{repository_url}}"
+				"key": "git clone <repository-url>"
 			},
 			{
-				"name": "project_name",
-				"key": "cd astro-template",
-				"value": "cd {{project_name}}"
-			},
-			{
-				"name": "author",
-				"key": "For support and questions, please open an issue on the repository.",
-				"value": "For support and questions, please contact {{project_author}} or open an issue on the repository."
-			}
-		]
-	},
-	{
-		"files_to_replace": ["config/default.json", "config/dev.json", "config/prod.json", "config/test.json"],
-		"replacements": [
-			{
-				"name": "project_name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
-			},
-			{
-				"name": "project_version",
-				"key": "{{project_version}}",
-				"value": "{{project_version}}"
-			},
-			{
-				"name": "project_description",
-				"key": "{{project_description}}",
-				"value": "{{project_description}}"
-			}
-		]
-	},
-	{
-		"files_to_replace": ["src/lib/logging/index.ts"],
-		"replacements": [
-			{
-				"name": "project_name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
+				"name": "project_author",
+				"key": "For support and questions, please open an issue on the repository."
 			}
 		]
 	},
@@ -95,25 +50,8 @@
 		"files_to_replace": [".github/workflows/deploy-dev.yml", ".github/workflows/deploy-prod.yml"],
 		"replacements": [
 			{
-				"name": "project_name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
-			},
-			{
 				"name": "website_url",
-				"key": "{{website_url}}",
-				"value": "{{website_url}}",
 				"default": ""
-			}
-		]
-	},
-	{
-		"files_to_replace": ["railway.toml"],
-		"replacements": [
-			{
-				"name": "project_name",
-				"key": "{{project_name}}",
-				"value": "{{project_name}}"
 			}
 		]
 	}

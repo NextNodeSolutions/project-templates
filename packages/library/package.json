@@ -1,16 +1,10 @@
 {
-  "name": "@nextnode/functions-client",
-  "version": "0.0.0",
-  "description": "Client library for Nextnode Functions",
-  "keywords": [
-    "api",
-    "client",
-    "functions",
-    "nextnode",
-    "typescript"
-  ],
-  "license": "ISC",
-  "author": "Walid M",
+  "name": "{{name}}",
+  "version": "{{project_version}}",
+  "description": "{{project_description}}",
+  "keywords": "{{project_keywords}}",
+  "license": "{{project_license}}",
+  "author": "{{project_author}}",
   "main": "./dist/index.js",
   "scripts": {
     "prebuild": "pnpm clean",

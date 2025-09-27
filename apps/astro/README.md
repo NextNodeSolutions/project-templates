@@ -1,6 +1,6 @@
-# Astro Template
+# {{project_name}}
 
-A modern, high-performance Astro template with TypeScript, Tailwind CSS, and best practices for building fast websites and applications.
+{{project_description}}
 
 ## Features
 
@@ -26,7 +26,7 @@ A modern, high-performance Astro template with TypeScript, Tailwind CSS, and bes
 1. Clone this template:
 ```bash
 git clone <repository-url>
-cd astro-template
+cd {{project_name}}
 ```
 
 2. Install dependencies:
