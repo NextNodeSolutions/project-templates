@@ -1,16 +1,9 @@
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import node from '@astrojs/node'
-import { loadConfig } from '@nextnode/config-manager'
-import type { Config } from './types/config.d.ts'
 
-// Load configuration from config files
-const config = loadConfig<Config>()
-const { server } = config
-
-// Environment variables override config
-const host = process.env.HOST || server.host
-const port = Number(process.env.PORT) || server.port
+const host = process.env.HOST || '0.0.0.0'
+const port = Number(process.env.PORT) || 4321
 const site = process.env.URL || `http://${host}:${port}`
 
 // https://astro.build/config

@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.4.4",
-    "@nextnode/config-manager": "3.1.0",
     "@nextnode/logger": "^0.2.4",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.14.1",

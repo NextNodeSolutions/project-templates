@@ -2,7 +2,7 @@
 	{
 		"files_to_replace": ["package.json"],
 		"replacements": [
-			{ "name": "project_name", "attribute": "name" },
+			{ "name": "name", "attribute": "name" },
 			{ "name": "project_description", "attribute": "description" },
 			{ "name": "project_author", "attribute": "author" },
 			{ "name": "project_keywords", "attribute": "keywords", "type": "array" },
