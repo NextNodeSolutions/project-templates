@@ -1,25 +1,17 @@
 {
-	"extends": "astro/tsconfigs/base",
+	"extends": "@nextnode/standards/typescript/astro",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"target": "es2022",
-		"allowJs": true,
-		"resolveJsonModule": true,
-		"moduleDetection": "force",
-		"isolatedModules": true,
-		"verbatimModuleSyntax": true,
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"noImplicitOverride": true,
-		"module": "preserve",
-		"noEmit": true,
-		"lib": ["es2022", "dom", "dom.iterable"]
-	},  
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist", "node_modules"]
+			"@/*": ["./src/*"],
+			"@/types/*": ["./types/*"]
+		}
+	},
+	"include": [".astro/types.d.ts", "**/*", "src/**/*"],
+	"exclude": [
+		"dist",
+		"node_modules",
+		".astro/**/*.mjs",
+        "tests/coverage"
+	]
 }

@@ -7,13 +7,13 @@ on:
 jobs:
     quality-checks:
         name: Quality Checks
-        uses: ./.github/workflows/quality-checks.yml
+        # Skip redundant checks on develop→main PRs
+        if: ${{ !(github.base_ref == 'main' && github.head_ref == 'develop') }}
+        uses: NextNodeSolutions/github-actions/.github/workflows/quality-checks.yml@main
         with:
             run-lint: true
             run-typecheck: true
-            run-test: true
+            run-tests: true
             run-build: false
             run-security: false
             test-coverage: false
-            node-version: '22'
-            pnpm-version: '10.11.0'

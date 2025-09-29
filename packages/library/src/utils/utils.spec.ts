@@ -2,9 +2,9 @@
  * Utility functions tests
  */
 
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
-import { deepMerge, isObject, delay } from '../utils/index.js'
+import { deepMerge, delay, isObject } from './utils.js'
 
 describe('Utils', () => {
   describe('deepMerge', () => {

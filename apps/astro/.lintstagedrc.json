@@ -1,5 +1,4 @@
 {
-	"*.{js,jsx,ts,tsx}": ["pnpm lint --no-warn-ignored"],
 	"package.json": ["better-sort-package-json"],
-	"*.{js,jsx,ts,tsx,astro,json,jsonc,md}": ["prettier --write"]
+	"*": ["pnpm lint", "pnpm format"]
 }

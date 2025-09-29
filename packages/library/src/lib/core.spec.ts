@@ -2,9 +2,9 @@
  * Core library functionality tests
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { createClient, validateConfig, processData } from '../lib/core.js'
+import { createClient, processData, validateConfig } from './core.js'
 
 // Mock the logger
 vi.mock('../utils/logger.js', () => ({

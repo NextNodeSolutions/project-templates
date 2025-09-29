@@ -1,37 +1,14 @@
 {
+	"extends": "@nextnode/standards/typescript/library",
 	"compilerOptions": {
-		"target": "ES2023",
-		"module": "ESNext",
-		"moduleResolution": "bundler",
-		"lib": ["ES2023"],
-
-		// Type Safety Maximum - 100% Typé
-		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
-		"noImplicitOverride": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true,
-
-		// 100% ECMAScript - Library Ready
-		"isolatedModules": true,
-		"verbatimModuleSyntax": true,
-		"forceConsistentCasingInFileNames": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"allowJs": true,
-
 		// TypeScript Paths
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["src/*"],
+			"@/types/*": ["./types/*"]
 		},
 
-		// DEV: Validation uniquement (pas de génération)
-		"noEmit": true,
+		// Types
 		"types": ["node", "vitest/globals"]
 	},
 	"include": [
@@ -43,5 +20,9 @@
 		"eslint.config.mjs",
 		"vitest.config.ts"
 	],
-	"exclude": ["node_modules", "dist"]
+	"exclude": [
+        "node_modules", 
+        "dist",
+        "tests/coverage"
+    ]
 }

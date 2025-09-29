@@ -1,7 +1,5 @@
 {
-	"*.{js,jsx,ts,tsx}": ["pnpm lint:fix"],
 	"package.json": ["better-sort-package-json"],
-	"*": [
-		"pnpm format"
-	]
+	"*": ["pnpm lint", "pnpm format"]
 }
+
