@@ -13,10 +13,6 @@
 	{
 		"files_to_replace": [
 			"README.md",
-			"config/default.json",
-			"config/dev.json",
-			"config/prod.json",
-			"config/test.json",
 			"src/lib/logging/index.ts",
 			"railway.toml",
 			".github/workflows/deploy-dev.yml",
@@ -24,13 +20,6 @@
 		],
 		"replacements": [
 			{ "name": "project_name" }
-		]
-	},
-	{
-		"files_to_replace": ["config/default.json", "config/dev.json", "config/prod.json", "config/test.json"],
-		"replacements": [
-			{ "name": "project_version" },
-			{ "name": "project_description" }
 		]
 	},
 	{
