@@ -6,5 +6,18 @@ export default mergeConfig(
 	baseConfig,
 	defineConfig({
 		plugins: [tsconfigPaths()],
+		test: {
+            include: ['./**/*.{test,spec}.ts'],
+			setupFiles: ['./tests/setup.ts'],
+			coverage: {
+                reportsDirectory: './tests/coverage',
+				thresholds: {
+					lines: 80,
+					functions: 80,
+					branches: 80,
+					statements: 80
+				}
+			}
+		}
 	})
 )

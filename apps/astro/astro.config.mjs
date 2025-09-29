@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
+
 import node from '@astrojs/node'
 import sitemap from '@astrojs/sitemap'
 import { logger } from '@nextnode/logger'
+import tailwindcss from '@tailwindcss/vite'
 
 const host = process.env.HOST || '0.0.0.0'
 const port = Number(process.env.PORT) || 4321
