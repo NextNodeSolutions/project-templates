@@ -21,6 +21,7 @@ logger.info('Configuration loaded', {
 // https://astro.build/config
 export default defineConfig({
 	site,
+	output: 'server',
 	server: {
 		port,
 		host,
@@ -46,9 +47,4 @@ export default defineConfig({
 			},
 		}),
 	],
-	output: 'server',
-	compressHTML: true,
-	experimental: {
-		optimizeHoistedScript: true,
-	},
 })

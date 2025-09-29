@@ -1,12 +1,15 @@
 import { defineConfig, mergeConfig } from 'vitest/config'
 import baseConfig from '@nextnode/standards/vitest/frontend'
+import tsconfigPaths from 'vite-tsconfig-paths'
+
+import type { Plugin } from 'vitest/config'
 
 export default mergeConfig(
 	baseConfig,
 	defineConfig({
+		plugins: [tsconfigPaths() as Plugin],
 		test: {
 			setupFiles: ['./tests/setup.ts'],
-			include: ['tests/**/*.{test,spec}.{js,ts}', 'src/**/*.{test,spec}.{js,ts}'],
 			coverage: {
 				thresholds: {
 					lines: 80,

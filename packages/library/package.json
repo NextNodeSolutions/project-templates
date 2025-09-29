@@ -43,7 +43,8 @@
     "prettier": "^3.2.0",
     "tsc-alias": "^1.8.16",
     "typescript": "^5.0.0",
-    "vitest": "^3.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   },
   "peerDependencies": {
     "eslint": "^9.22.0"
