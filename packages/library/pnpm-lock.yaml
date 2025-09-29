@@ -31,8 +31,8 @@ importers:
         specifier: ^19.1.0
         version: 19.8.1
       '@nextnode/standards':
-        specifier: ^2.1.1
-        version: 2.1.1(@biomejs/biome@2.2.4)(@commitlint/cli@19.8.1(@types/node@22.17.2)(typescript@5.8.3))(@commitlint/config-conventional@19.8.1)(prettier@3.6.2)(vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0)))(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))(vitest@3.2.4(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))
+        specifier: ^2.1.3
+        version: 2.1.3(@biomejs/biome@2.2.4)(@commitlint/cli@19.8.1(@types/node@22.17.2)(typescript@5.8.3))(@commitlint/config-conventional@19.8.1)(prettier@3.6.2)(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))(vitest@3.2.4(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))
       '@types/node':
         specifier: ^22.0.0
         version: 22.17.2
@@ -537,8 +537,8 @@ packages:
     peerDependencies:
       eslint: ^9.22.0
 
-  '@nextnode/standards@2.1.1':
-    resolution: {integrity: sha512-YJFeig5c0PqTT8tXdMFBJF246zWiOpEZOJD8ez7c9wY0xbFLmrAu9DdNlbf0zD3ryvgPAbfrPLwP6woR59gTLg==}
+  '@nextnode/standards@2.1.3':
+    resolution: {integrity: sha512-sEFFQ/1n0fk6knQF5rWbstLRYnJ9geMmPxze635KFP6M2vlMZBkwIpMPgkmQ8eeMaOTSI6kCRF/ioie0i9Z2wg==}
     engines: {node: '>=24.0.0'}
     peerDependencies:
       '@biomejs/biome': ^2.0.0
@@ -546,7 +546,6 @@ packages:
       '@commitlint/config-conventional': ^19.0.0
       prettier: ^3.0.0
       vite: ^5.0.0
-      vite-tsconfig-paths: ^5.0.0
       vitest: ^3.0.0
     peerDependenciesMeta:
       '@commitlint/cli':
@@ -556,8 +555,6 @@ packages:
       prettier:
         optional: true
       vite:
-        optional: true
-      vite-tsconfig-paths:
         optional: true
       vitest:
         optional: true
@@ -2662,7 +2659,7 @@ snapshots:
     dependencies:
       eslint: 9.27.0(jiti@2.4.2)
 
-  '@nextnode/standards@2.1.1(@biomejs/biome@2.2.4)(@commitlint/cli@19.8.1(@types/node@22.17.2)(typescript@5.8.3))(@commitlint/config-conventional@19.8.1)(prettier@3.6.2)(vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0)))(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))(vitest@3.2.4(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))':
+  '@nextnode/standards@2.1.3(@biomejs/biome@2.2.4)(@commitlint/cli@19.8.1(@types/node@22.17.2)(typescript@5.8.3))(@commitlint/config-conventional@19.8.1)(prettier@3.6.2)(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))(vitest@3.2.4(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))':
     dependencies:
       '@biomejs/biome': 2.2.4
     optionalDependencies:
@@ -2670,7 +2667,6 @@ snapshots:
       '@commitlint/config-conventional': 19.8.1
       prettier: 3.6.2
       vite: 7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0)
-      vite-tsconfig-paths: 5.1.4(typescript@5.8.3)(vite@7.1.7(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0))
       vitest: 3.2.4(@types/node@22.17.2)(jiti@2.4.2)(yaml@2.8.0)
 
   '@nodelib/fs.scandir@2.1.5':

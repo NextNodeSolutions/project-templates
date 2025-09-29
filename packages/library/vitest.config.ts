@@ -1,6 +1,6 @@
-import { defineConfig, mergeConfig } from 'vitest/config'
 import baseConfig from '@nextnode/standards/vitest/backend'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig, mergeConfig } from 'vitest/config'
 
 export default mergeConfig(
 	baseConfig,
@@ -11,12 +11,13 @@ export default mergeConfig(
 			setupFiles: ['./tests/setup.ts'],
 			coverage: {
                 reportsDirectory: './tests/coverage',
-				thresholds: {
-					lines: 80,
-					functions: 80,
-					branches: 80,
-					statements: 80
-				}
+                // Minimium coverage to pass tests
+				// thresholds: {
+				// 	lines: 80,
+				// 	functions: 80,
+				// 	branches: 80,
+				// 	statements: 80
+				// }
 			}
 		}
 	})

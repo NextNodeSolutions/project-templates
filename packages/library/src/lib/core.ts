@@ -2,9 +2,8 @@
  * Core library functionality
  */
 
-import { coreLogger, logError } from '../utils/logger.js'
-
 import type { ClientConfig } from '../types/index.js'
+import { coreLogger, logError } from '../utils/logger.js'
 
 /**
  * Example core function - creates a client instance

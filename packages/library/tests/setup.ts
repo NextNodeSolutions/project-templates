@@ -1,4 +1,4 @@
-import { beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach } from 'vitest'
 
 // Global test setup
 // This file is run before each test file

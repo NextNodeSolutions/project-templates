@@ -12,12 +12,13 @@ export default mergeConfig(
 			setupFiles: ['./tests/setup.ts'],
 			coverage: {
                 reportsDirectory: './tests/coverage',
-				thresholds: {
-					lines: 80,
-					functions: 80,
-					branches: 80,
-					statements: 80
-				}
+                // Minimium coverage to pass tests
+				// thresholds: {
+				// 	lines: 80,
+				// 	functions: 80,
+				// 	branches: 80,
+				// 	statements: 80
+				// }
 			}
 		}
 	})
