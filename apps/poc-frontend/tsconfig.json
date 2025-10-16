@@ -1,0 +1,49 @@
+{
+	"compilerOptions": {
+		// Module System
+		"target": "ES2023",
+		"useDefineForClassFields": true,
+		"module": "ESNext",
+		"lib": ["ES2023", "DOM", "DOM.Iterable"],
+		"skipLibCheck": true,
+
+		// Bundler mode
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"moduleDetection": "force",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+
+		// JSX for Preact
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
+
+		// Path Aliases
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"react": ["./node_modules/preact/compat/"],
+			"react-dom": ["./node_modules/preact/compat/"]
+		},
+
+		// Type Safety (Strict Mode)
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noUncheckedSideEffectImports": true,
+		"noImplicitOverride": true,
+		"exactOptionalPropertyTypes": true,
+
+		// Additional Checks
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true
+	},
+	"include": ["src/**/*", "__tests__/**/*"],
+	"exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,26 @@
+[
+	{
+		"files_to_replace": ["package.json"],
+		"replacements": [
+			{ "name": "project_name", "attribute": "name" },
+			{ "name": "project_description", "attribute": "description" },
+			{ "name": "project_author", "attribute": "author" },
+			{ "name": "project_keywords", "attribute": "keywords", "type": "array" },
+			{ "name": "project_license", "attribute": "license" },
+			{ "name": "project_version", "attribute": "version" }
+		]
+	},
+	{
+		"files_to_replace": [
+			"README.md",
+			"index.html",
+			"src/app.tsx",
+			"src/lib/logger.ts"
+		],
+		"replacements": [
+			{ "name": "project_name" },
+			{ "name": "project_description" },
+			{ "name": "project_version" }
+		]
+	}
+]
