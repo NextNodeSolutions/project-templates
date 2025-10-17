@@ -31,12 +31,11 @@ This is a **POC (Proof of Concept) frontend template** for NextNode projects, de
 ### NextNode Standards
 - **@nextnode/standards**: Shared configurations for TypeScript, Vitest, Prettier, Biome
 - **@nextnode/logger**: Structured logging with environment-aware formatting
-- **@nextnode/eslint-plugin**: Consistent code quality standards
 
 ### Testing & Quality
 - **Vitest**: Modern test runner with built-in TypeScript support
 - **@testing-library/preact**: Component testing utilities
-- **ESLint + Biome**: Linting and formatting
+- **Biome**: Unified linting and formatting (replaces ESLint + Prettier)
 - **Husky + lint-staged**: Pre-commit quality gates
 
 ## Development Commands
@@ -58,8 +57,8 @@ pnpm test:ui          # Open Vitest UI for interactive testing
 
 ### Code Quality Commands
 ```bash
-pnpm lint             # ESLint with zero warnings policy
-pnpm lint:fix         # Auto-fix ESLint issues
+pnpm lint             # Biome check (linting)
+pnpm lint:fix         # Biome check with auto-fix
 pnpm format           # Format code with Biome
 pnpm format:check     # Check formatting without changes
 pnpm type-check       # TypeScript type checking without build
@@ -68,7 +67,7 @@ pnpm type-check       # TypeScript type checking without build
 ### Git Hooks (Automatic)
 ```bash
 # Pre-commit (runs automatically)
-- lint-staged: ESLint + Biome on staged files
+- lint-staged: Biome check on staged files
 
 # Commit-msg (runs automatically)
 - commitlint: Validates conventional commit messages
@@ -112,7 +111,6 @@ pnpm type-check       # TypeScript type checking without build
 │   └── storage.spec.ts        # Storage tests
 ├── biome.json                 # Biome configuration
 ├── commitlint.config.js       # Commitlint configuration
-├── eslint.config.mjs          # ESLint configuration
 ├── index.html                 # HTML entry point
 ├── package.json               # Dependencies and scripts
 ├── tsconfig.json              # TypeScript configuration
@@ -634,7 +632,7 @@ To evolve this POC into production:
 ## Best Practices Summary
 
 ### Code Quality
-- **Zero warnings policy**: Fix all ESLint warnings before commit
+- **Zero warnings policy**: Fix all Biome warnings before commit
 - **Type safety**: No `any` types, handle null/undefined explicitly
 - **Test coverage**: Aim for >80% on new features
 - **Conventional commits**: Required for all commits
