@@ -3,7 +3,6 @@ import { storageLogger } from './logger'
 
 /**
  * Type-safe localStorage wrapper with automatic serialization
- * Inspired by florist-bouquet-preview's storage patterns
  */
 export class LocalStorage<T> {
 	private key: string

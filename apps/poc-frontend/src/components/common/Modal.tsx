@@ -13,46 +13,36 @@ export interface ModalProps {
 export const Modal = ({ isOpen, onClose, children, title, className }: ModalProps) => {
 	const modalRef = useRef<HTMLDivElement>(null)
 
-	// Handle click outside
+	// Handle modal interactions (click outside, escape key, body scroll lock)
 	useEffect(() => {
 		if (!isOpen) return
 
+		// Lock body scroll
+		document.body.style.overflow = 'hidden'
+
+		// Handle click outside
 		const handleClickOutside = (e: MouseEvent) => {
 			if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
 				onClose()
 			}
 		}
 
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => document.removeEventListener('mousedown', handleClickOutside)
-	}, [isOpen, onClose])
-
-	// Handle escape key
-	useEffect(() => {
-		if (!isOpen) return
-
+		// Handle escape key
 		const handleEscape = (e: KeyboardEvent) => {
 			if (e.key === 'Escape') {
 				onClose()
 			}
 		}
 
+		document.addEventListener('mousedown', handleClickOutside)
 		document.addEventListener('keydown', handleEscape)
-		return () => document.removeEventListener('keydown', handleEscape)
-	}, [isOpen, onClose])
-
-	// Lock body scroll when modal is open
-	useEffect(() => {
-		if (isOpen) {
-			document.body.style.overflow = 'hidden'
-		} else {
-			document.body.style.overflow = 'unset'
-		}
 
 		return () => {
 			document.body.style.overflow = 'unset'
+			document.removeEventListener('mousedown', handleClickOutside)
+			document.removeEventListener('keydown', handleEscape)
 		}
-	}, [isOpen])
+	}, [isOpen, onClose])
 
 	if (!isOpen) return null
 
