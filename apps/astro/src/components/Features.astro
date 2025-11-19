@@ -64,25 +64,22 @@ const {
     <!-- Features Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map((feature, index) => (
-        <div 
+        <div
           class="group relative bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border border-gray-200 hover:border-nextnode-300 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
           style={`animation-delay: ${index * 100}ms`}
         >
-          <!-- Icon -->
           <div class="w-16 h-16 bg-gradient-to-br from-nextnode-500 to-accent-500 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
             {feature.icon}
           </div>
 
-          <!-- Content -->
           <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-nextnode-700 transition-colors duration-300">
             {feature.title}
           </h3>
-          
+
           <p class="text-gray-600 leading-relaxed">
             {feature.description}
           </p>
 
-          <!-- Hover effect -->
           <div class="absolute inset-0 bg-gradient-to-br from-nextnode-500/5 to-accent-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
         </div>
       ))}
