@@ -46,7 +46,6 @@ RUN pnpm install --frozen-lockfile --ignore-scripts
 # Copy source code (optimized order for layer caching)
 COPY --chown=astro:astro public ./public/
 COPY --chown=astro:astro src ./src/
-COPY --chown=astro:astro config ./config/
 COPY --chown=astro:astro types ./types/
 COPY --chown=astro:astro astro.config.mjs tsconfig.json biome.json ./
 
