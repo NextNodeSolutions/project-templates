@@ -16,7 +16,9 @@
 			"src/lib/logging/index.ts",
 			"railway.toml",
 			".github/workflows/deploy-dev.yml",
-			".github/workflows/deploy-prod.yml"
+			".github/workflows/deploy-prod.yml",
+			".github/workflows/pr-preview.yml",
+			".github/workflows/pr-preview-cleanup.yml"
 		],
 		"replacements": [
 			{ "name": "project_name" }
@@ -36,7 +38,11 @@
 		]
 	},
 	{
-		"files_to_replace": [".github/workflows/deploy-dev.yml", ".github/workflows/deploy-prod.yml"],
+		"files_to_replace": [
+			".github/workflows/deploy-dev.yml",
+			".github/workflows/deploy-prod.yml",
+			".github/workflows/pr-preview.yml"
+		],
 		"replacements": [
 			{
 				"name": "website_url",

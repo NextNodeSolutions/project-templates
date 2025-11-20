@@ -1,0 +1,13 @@
+name: PR Preview Cleanup
+
+on:
+    pull_request:
+        types: [closed]
+
+jobs:
+    cleanup:
+        name: Cleanup PR Preview
+        uses: NextNodeSolutions/github-actions/.github/workflows/pr-preview-cleanup.yml@main
+        with:
+            app-name: '{{project_name}}'
+        secrets: inherit

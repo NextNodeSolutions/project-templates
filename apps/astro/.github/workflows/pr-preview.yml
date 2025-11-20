@@ -1,0 +1,30 @@
+name: PR Preview
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+        branches:
+            - develop
+            - main
+
+jobs:
+    preview:
+        if: github.head_ref != 'develop'
+        name: Deploy PR Preview
+        uses: NextNodeSolutions/github-actions/.github/workflows/pr-preview.yml@main
+        with:
+            app-name: '{{project_name}}'
+            base-domain: '{{website_url}}'
+            base-environment: 'development'
+            run-quality-checks: true
+            memory-mb: '512'
+        secrets: inherit
+
+    dns:
+        name: Update DNS
+        needs: preview
+        uses: NextNodeSolutions/github-actions/.github/workflows/dns.yml@main
+        with:
+            domain: ${{ needs.preview.outputs.custom-domain }}
+            target: ${{ needs.preview.outputs.cname-target }}
+        secrets: inherit
