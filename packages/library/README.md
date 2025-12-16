@@ -1,139 +1,48 @@
-# {{name}}
+# {{project_name}}
 
 {{project_description}}
 
 ## Installation
 
 ```bash
-npm install {{name}}
-```
-
-Or with pnpm:
-
-```bash
-pnpm add {{name}}
+pnpm add {{project_name}}
 ```
 
 ## Usage
 
-### Basic Setup
-
 ```typescript
-import { NextnodeClient } from '{{name}}';
+import {} from '{{project_name}}'
 
-// Initialize the client
-const client = new NextnodeClient({
-  apiKey: 'your-api-key',
-  baseUrl: 'https://api.nextnode.com', // optional, defaults to this
-  timeout: 30000 // optional, defaults to 30 seconds
-});
-```
-
-### Execute a Function
-
-```typescript
-// Execute a function
-const result = await client.executeFunction({
-  functionName: 'my-function',
-  payload: {
-    key: 'value',
-    data: [1, 2, 3]
-  },
-  headers: {
-    'Custom-Header': 'value'
-  }
-});
-
-if (result.success) {
-  console.log('Function result:', result.data);
-} else {
-  console.error('Function error:', result.error);
-}
-```
-
-### Configuration Management
-
-```typescript
-// Update configuration
-client.updateConfig({
-  apiKey: 'new-api-key',
-  timeout: 60000
-});
-
-// Get current configuration
-const config = client.getConfig();
-console.log('Current config:', config);
-```
-
-## API Reference
-
-### NextnodeClient
-
-#### Constructor
-
-```typescript
-new NextnodeClient(config?: NextnodeConfig)
-```
-
-#### Methods
-
-- `executeFunction<T>(request: FunctionRequest): Promise<FunctionResponse<T>>` - Execute a function
-- `updateConfig(newConfig: Partial<NextnodeConfig>): void` - Update client configuration
-- `getConfig(): NextnodeConfig` - Get current configuration
-
-### Types
-
-#### NextnodeConfig
-
-```typescript
-interface NextnodeConfig {
-  apiKey?: string;
-  baseUrl?: string;
-  timeout?: number;
-}
-```
-
-#### FunctionRequest
-
-```typescript
-interface FunctionRequest {
-  functionName: string;
-  payload?: Record<string, any>;
-  headers?: Record<string, string>;
-}
-```
-
-#### FunctionResponse
-
-```typescript
-interface FunctionResponse<T = any> {
-  success: boolean;
-  data?: T;
-  error?: string;
-  statusCode: number;
-}
+// TODO: Add usage examples
 ```
 
 ## Development
 
-### Building
+### Commands
 
 ```bash
-npm run build
-```
+# Development
+pnpm build              # Build with tsup (minified ESM + .d.ts)
+pnpm clean              # Remove dist directory
+pnpm type-check         # TypeScript validation
+pnpm size               # Check bundle size
 
-### Development Mode
+# Testing
+pnpm test               # Run tests once
+pnpm test:watch         # Watch mode for tests
+pnpm test:coverage      # Generate coverage report
+pnpm test:ui            # Open Vitest UI
 
-```bash
-npm run dev
-```
+# Code Quality
+pnpm lint               # Lint with Biome (auto-fix)
+pnpm format             # Format with Prettier
 
-### Publishing
-
-```bash
-npm publish
+# Version Management
+pnpm changeset          # Create changeset for version bump
+pnpm changeset:version  # Update versions from changesets
+pnpm changeset:publish  # Publish to NPM registry
 ```
 
 ## License
 
-ISC
+{{project_license}}

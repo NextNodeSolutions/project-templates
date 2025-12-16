@@ -1,71 +1,73 @@
 {
-  "name": "library-starter",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": "",
-  "license": "",
-  "author": "Nextnode",
-  "main": "./dist/index.js",
-  "scripts": {
-    "prebuild": "pnpm clean",
-    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
-    "changeset": "changeset",
-    "changeset:publish": "changeset publish",
-    "changeset:version": "changeset version",
-    "clean": "rm -rf dist",
-    "commitlint": "commitlint --edit",
-    "format": "prettier --write .",
-    "lint": "biome check --write --no-errors-on-unmatched",
-    "lint-staged": "lint-staged",
-    "prepare": "husky",
-    "prepublishOnly": "pnpm build",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest",
-    "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@nextnode/logger": "^0.2.4"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.2.3",
-    "@changesets/changelog-github": "^0.5.1",
-    "@changesets/cli": "^2.29.4",
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
-    "@nextnode/standards": "^2.1.3",
-    "@types/node": "^22.0.0",
-    "@vitest/coverage-v8": "^3.1.4",
-    "better-sort-package-json": "^1.1.1",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.0",
-    "tsc-alias": "^1.8.16",
-    "typescript": "^5.0.0",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4"
-  },
-  "peerDependencies": {
-    "eslint": "^9.22.0"
-  },
-  "engines": {
-    "node": ">=24.0.0"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "type": "module",
-  "prettier": "@nextnode/standards/prettier",
-  "files": [
-    "CHANGELOG.md",
-    "README.md",
-    "dist/**/*"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
-  },
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+	"name": "{{project_name}}",
+	"version": "{{project_version}}",
+	"description": "{{project_description}}",
+	"keywords": [
+		"library",
+		"nextnode",
+		"typescript"
+	],
+	"license": "{{project_license}}",
+	"author": "{{project_author}}",
+	"files": [
+		"CHANGELOG.md",
+		"README.md",
+		"dist/**/*.d.ts",
+		"dist/**/*.js"
+	],
+	"main": "./dist/index.js",
+	"scripts": {
+		"prebuild": "pnpm clean",
+		"build": "tsup",
+		"changeset": "changeset",
+		"changeset:publish": "changeset publish",
+		"changeset:version": "changeset version",
+		"clean": "rm -rf dist",
+		"commitlint": "commitlint --edit",
+		"format": "prettier --write .",
+		"lint": "biome check --write --no-errors-on-unmatched",
+		"lint-staged": "lint-staged",
+		"prepare": "husky",
+		"prepublishOnly": "pnpm build",
+		"size": "du -sh dist/ && find dist -name '*.js' -exec wc -c {} + | tail -1",
+		"test": "vitest run",
+		"test:coverage": "vitest run --coverage",
+		"test:ui": "vitest --ui",
+		"test:watch": "vitest",
+		"type-check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@nextnode/logger": "^0.3.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2",
+		"@changesets/changelog-github": "^0.5.1",
+		"@changesets/cli": "^2.29.4",
+		"@commitlint/cli": "^19",
+		"@nextnode/standards": "^2.2.0",
+		"@types/node": "^22",
+		"@vitest/coverage-v8": "^3",
+		"better-sort-package-json": "^1",
+		"husky": "^9",
+		"lint-staged": "^16",
+		"prettier": "^3",
+		"tsup": "^8.5.1",
+		"typescript": "^5",
+		"vitest": "^3"
+	},
+	"engines": {
+		"node": ">=24.0.0"
+	},
+	"packageManager": "pnpm@10.11.0",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"module": "./dist/index.js",
+	"prettier": "@nextnode/standards/prettier/core",
+	"sideEffects": false,
+	"types": "./dist/index.d.ts"
 }

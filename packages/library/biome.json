@@ -1,6 +1,3 @@
 {
-	"extends": ["@nextnode/standards/biome"],
-	"files": {
-		"includes": ["!src/__tests__/fixtures/configs/invalid.json"]
-	}
+	"extends": ["@nextnode/standards/biome"]
 }
