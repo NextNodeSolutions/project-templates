@@ -2,7 +2,9 @@
 	"$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
 	"changelog": [
 		"@changesets/changelog-github",
-		{ "repo": "NextNodeSolutions/{{project_name}}" }
+		{
+			"repo": "{{repository_name}}"
+		}
 	],
 	"commit": false,
 	"fixed": [],

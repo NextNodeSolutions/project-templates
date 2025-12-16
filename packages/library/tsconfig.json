@@ -1,28 +1,13 @@
 {
 	"extends": "@nextnode/standards/typescript/library",
 	"compilerOptions": {
-		// TypeScript Paths
+		"lib": ["ES2023", "DOM", "DOM.Iterable", "WebWorker"],
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@/types/*": ["./types/*"]
+			"@/*": ["src/*"]
 		},
-
-		// Types
 		"types": ["node", "vitest/globals"]
 	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.test.ts",
-		"src/**/*.spec.ts",
-		"types/**/*.ts",
-		"*.config.*",
-		"eslint.config.mjs",
-		"vitest.config.ts"
-	],
-	"exclude": [
-        "node_modules", 
-        "dist",
-        "tests/coverage"
-    ]
+	"include": ["src/**/*.ts", "*.config.*"],
+	"exclude": ["node_modules", "dist"]
 }

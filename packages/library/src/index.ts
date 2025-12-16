@@ -3,9 +3,9 @@
  * {{project_description}}
  */
 
-// Main library exports
-export * from './lib/core.js'
+// Core library exports
+export * from './lib/index.js'
 // Type exports
 export type * from './types/index.js'
 // Utility exports
-export * from './utils/utils.js'
+export * from './utils/index.js'

@@ -2,19 +2,16 @@
 	{
 		"files_to_replace": ["package.json"],
 		"replacements": [
-			{ "name": "name", "attribute": "name" },
+			{ "name": "project_name", "attribute": "name" },
 			{ "name": "project_description", "attribute": "description" },
 			{ "name": "project_author", "attribute": "author" },
-			{ "name": "project_keywords", "attribute": "keywords", "type": "array" },
 			{ "name": "project_license", "attribute": "license" },
 			{ "name": "project_version", "attribute": "version" }
 		]
 	},
 	{
 		"files_to_replace": [".changeset/config.json"],
-		"replacements": [
-			{ "name": "project_name" }
-		]
+		"replacements": [{ "name": "repository_name" }]
 	},
 	{
 		"files_to_replace": ["src/index.ts"],
@@ -24,16 +21,11 @@
 		]
 	},
 	{
-		"files_to_replace": ["src/utils/logger.ts"],
-		"replacements": [
-			{ "name": "project_name" }
-		]
-	},
-	{
 		"files_to_replace": ["README.md"],
 		"replacements": [
-			{ "name": "name" },
-			{ "name": "project_description" }
+			{ "name": "project_name" },
+			{ "name": "project_description" },
+			{ "name": "project_license" }
 		]
 	}
 ]

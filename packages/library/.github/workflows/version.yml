@@ -1,24 +1,22 @@
 name: Version Management
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+    push:
+        branches: [main]
+    workflow_dispatch:
 
 concurrency:
-  group: version-${{ github.ref }}
-  cancel-in-progress: false
+    group: version-${{ github.ref }}
+    cancel-in-progress: false
 
 jobs:
-  version-management:
-    name: Version Management
-    uses: NextNodeSolutions/github-actions/.github/workflows/version-management.yml@main
-    permissions:
-      contents: write
-      pull-requests: write
-      actions: read
-    with:
-      node-version: '24'
-      pnpm-version: '10.11.0'
-      version-script: 'changeset:version'
-      auto-merge: true 
+    version-management:
+        name: Version Management
+        uses: NextNodeSolutions/github-actions/.github/workflows/version-management.yml@main
+        permissions:
+            contents: write
+            pull-requests: write
+            actions: read
+        with:
+            version-script: 'changeset:version'
+            auto-merge: true
