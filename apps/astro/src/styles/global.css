@@ -1,61 +1,131 @@
+/**
+ * NextNode Brand - Tailwind v4 Configuration
+ * Aligned with Brand Guidelines v2.0 (December 2024)
+ */
+
 @import "tailwindcss";
 
+/* Dark mode via class */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-nextnode-50: #f0f9ff;
-  --color-nextnode-100: #e0f2fe;
-  --color-nextnode-200: #bae6fd;
-  --color-nextnode-300: #7dd3fc;
-  --color-nextnode-400: #38bdf8;
-  --color-nextnode-500: #0ea5e9;
-  --color-nextnode-600: #0284c7;
-  --color-nextnode-700: #0369a1;
-  --color-nextnode-800: #075985;
-  --color-nextnode-900: #0c4a6e;
+  /* ============================================
+   * FONTS (Brand Guidelines v2.0)
+   * ============================================ */
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-accent-50: #fef7ff;
-  --color-accent-100: #fdeeff;
-  --color-accent-200: #fbdcff;
-  --color-accent-300: #f8bfff;
-  --color-accent-400: #f391ff;
-  --color-accent-500: #ec4899;
-  --color-accent-600: #db2777;
-  --color-accent-700: #be185d;
-  --color-accent-800: #9d174d;
-  --color-accent-900: #831843;
+  /* ============================================
+   * TEAL SCALE (Primary)
+   * ============================================ */
+  --color-teal-50: #F0FDFA;
+  --color-teal-100: #CCFBF1;
+  --color-teal-200: #99F6E4;
+  --color-teal-300: #5EEAD4;
+  --color-teal-400: #2DD4BF;
+  --color-teal-500: #14B8A6;
+  --color-teal-600: #0D9488;
+  --color-teal-700: #0F766E;
+  --color-teal-800: #115E59;
+  --color-teal-900: #134E4A;
 
-  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-family-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* ============================================
+   * ORANGE SCALE (Accent)
+   * ============================================ */
+  --color-orange-50: #FFF7ED;
+  --color-orange-100: #FFEDD5;
+  --color-orange-200: #FED7AA;
+  --color-orange-300: #FDBA74;
+  --color-orange-400: #FB923C;
+  --color-orange-500: #F97316;
+  --color-orange-600: #EA580C;
+  --color-orange-700: #C2410C;
+
+  /* ============================================
+   * SEMANTIC TOKENS
+   * ============================================ */
+  --color-primary: #0D9488;
+  --color-primary-foreground: #FFFFFF;
+  --color-accent: #F97316;
+  --color-accent-foreground: #FFFFFF;
+  --color-background: #F8FAFC;
+  --color-foreground: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0F172A;
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-border: #E2E8F0;
+  --color-ring: #0D9488;
+  --color-destructive: #EF4444;
+  --color-destructive-foreground: #FFFFFF;
 }
 
-/* Styles de base personnalisés */
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    font-family: var(--font-family-sans);
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  h1, h2 {
+    font-family: var(--font-display);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
 }
 
-/* Composants personnalisés */
+/* ============================================
+ * DARK MODE
+ * ============================================ */
+.dark {
+  --color-primary: #14B8A6;
+  --color-primary-foreground: #141A30;
+  --color-accent: #FB923C;
+  --color-accent-foreground: #141A30;
+  --color-background: #141A30;
+  --color-foreground: #F8FAFC;
+  --color-card: #1E293B;
+  --color-card-foreground: #F8FAFC;
+  --color-muted: #1E293B;
+  --color-muted-foreground: #94A3B8;
+  --color-border: #334155;
+  --color-ring: #14B8A6;
+  --color-destructive: #F87171;
+  --color-destructive-foreground: #141A30;
+}
+
+/* ============================================
+ * COMPONENTS
+ * ============================================ */
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-nextnode-600 to-accent-600 text-white px-6 py-3 rounded-lg font-medium hover:from-nextnode-700 hover:to-accent-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition-all duration-200 shadow-lg hover:shadow-xl;
   }
 
   .btn-secondary {
-    @apply border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:border-nextnode-300 hover:text-nextnode-700 transition-all duration-200;
+    @apply border-2 border-border text-foreground px-6 py-3 rounded-lg font-medium hover:border-primary hover:text-primary transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition-all duration-200;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-nextnode-600 via-accent-600 to-nextnode-800 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-teal-600 to-orange-500 bg-clip-text text-transparent;
   }
 
   .card {
-    @apply bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply bg-card rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
   }
 
   .container-padding {
@@ -67,7 +137,9 @@
   }
 }
 
-/* Utilitaires personnalisés */
+/* ============================================
+ * UTILITIES
+ * ============================================ */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -80,4 +152,4 @@
   .animation-delay-2000 {
     animation-delay: 2s;
   }
-} 
+}
